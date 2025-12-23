@@ -13,7 +13,11 @@ export function DesktopLayout() {
   return (
     <div className={classes.layout}>
       <Header />
-      <Grid className={`${classes.layoutContent} container`} mb={{ base: 20, md: 30, lg: 40 }}>
+      <Grid
+        className={`${classes.layoutContent} container`}
+        mb={{ base: 20, md: 30, lg: 40 }}
+        gutter="md"
+      >
         <Grid.Col span={8 / 3}>
           {!isCheckoutPage && (
             <div className={classes.navbar}>

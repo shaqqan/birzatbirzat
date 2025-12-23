@@ -1,24 +1,11 @@
-.carousel {
-  position: relative;
+.root {
   width: 100%;
   border-radius: 16px;
   overflow: hidden;
   background-color: var(--mantine-color-gray-1);
 }
 
-.slidesContainer {
-  width: 100%;
-  overflow: hidden;
-}
-
-.slidesTrack {
-  display: flex;
-  transition: transform 400ms ease-in-out;
-}
-
 .slide {
-  flex: 0 0 100%;
-  width: 100%;
   cursor: pointer;
 }
 
@@ -31,64 +18,49 @@
 }
 
 /* Navigation Buttons */
-.navButton {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
+.control {
   opacity: 0;
   transition: opacity 200ms ease, transform 200ms ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background-color: white;
+  border: none;
 }
 
-.carousel:hover .navButton {
+.root:hover .control {
   opacity: 1;
 }
 
-.navButton:hover {
-  transform: translateY(-50%) scale(1.05);
+.control:hover {
+  transform: scale(1.05);
 }
 
-.navButton:active {
-  transform: translateY(-50%) scale(0.95);
-}
-
-.prevButton {
-  left: 16px;
-}
-
-.nextButton {
-  right: 16px;
+.control:active {
+  transform: scale(0.95);
 }
 
 /* Dots Indicator */
-.dots {
+.indicators {
   position: absolute;
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
   gap: 8px;
-  z-index: 10;
 }
 
-.dot {
+.indicator {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  border: none;
   background-color: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  padding: 0;
   transition: all 200ms ease;
 }
 
-.dot:hover {
+.indicator:hover {
   background-color: rgba(255, 255, 255, 0.8);
   transform: scale(1.2);
 }
 
-.dotActive {
+.indicator[data-active] {
   background-color: #fff;
   width: 24px;
   border-radius: 4px;

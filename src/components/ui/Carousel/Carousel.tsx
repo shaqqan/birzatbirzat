@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
-import { ActionIcon, Image } from "@mantine/core";
-import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import { useRef } from "react";
+import { Carousel } from "@mantine/carousel";
+import { Image } from "@mantine/core";
+import Autoplay from "embla-carousel-autoplay";
 import classes from "./Carousel.module.css";
 
 interface Banner {
@@ -21,14 +22,14 @@ const banners: Banner[] = [
   {
     id: "2",
     image:
-      "https://avatars.mds.yandex.net/get-grocery_goods/2750890/a1b2c3d4-e5f6-7890-abcd-ef1234567890/1520x480",
+      "https://avatars.mds.yandex.net/get-feeds-media/5396768/5c6e67418f3d2269e99555d36170e65d3bb867ee/media-984-312",
     alt: "Бесплатная доставка",
     link: "/promo/delivery",
   },
   {
     id: "3",
     image:
-      "https://avatars.mds.yandex.net/get-grocery_goods/2750890/12345678-90ab-cdef-1234-567890abcdef/1520x480",
+      "https://avatars.mds.yandex.net/get-feeds-media/3752444/fc93a1e4b8037516ff213561ba868c472adc7942/media-984-312",
     alt: "Новогодние подарки",
     link: "/promo/newyear",
   },
@@ -40,32 +41,14 @@ interface CarouselProps {
   autoPlayInterval?: number;
 }
 
-export function Carousel({
+export function BannerCarousel({
   items = banners,
   autoPlay = true,
   autoPlayInterval = 5000,
 }: CarouselProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-
-  const goToNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % items.length);
-  }, [items.length]);
-
-  const goToPrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
-  }, [items.length]);
-
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
-
-  useEffect(() => {
-    if (!autoPlay || isHovered) return;
-
-    const interval = setInterval(goToNext, autoPlayInterval);
-    return () => clearInterval(interval);
-  }, [autoPlay, autoPlayInterval, isHovered, goToNext]);
+  const autoplay = useRef(
+    Autoplay({ delay: autoPlayInterval, stopOnInteraction: false })
+  );
 
   const handleBannerClick = (banner: Banner) => {
     if (banner.link) {
@@ -74,68 +57,27 @@ export function Carousel({
   };
 
   return (
-    <div
-      className={classes.carousel}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+    <Carousel
+      withIndicators
+      classNames={classes}
+      plugins={autoPlay ? [autoplay.current] : []}
+      onMouseEnter={autoplay.current.stop}
+      onMouseLeave={autoplay.current.reset}
     >
-      <div className={classes.slidesContainer}>
-        <div
-          className={classes.slidesTrack}
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      {items.map((banner) => (
+        <Carousel.Slide
+          key={banner.id}
+          onClick={() => handleBannerClick(banner)}
+          style={{ cursor: banner.link ? "pointer" : "default" }}
         >
-          {items.map((banner) => (
-            <div
-              key={banner.id}
-              className={classes.slide}
-              onClick={() => handleBannerClick(banner)}
-            >
-              <Image
-                src={banner.image}
-                alt={banner.alt}
-                className={classes.bannerImage}
-                fallbackSrc="https://placehold.co/1520x480/ffe033/333333?text=Banner"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {items.length > 1 && (
-        <>
-          <ActionIcon
-            className={`${classes.navButton} ${classes.prevButton}`}
-            variant="white"
-            size="lg"
-            radius="xl"
-            onClick={goToPrev}
-          >
-            <IconChevronLeft size={20} />
-          </ActionIcon>
-
-          <ActionIcon
-            className={`${classes.navButton} ${classes.nextButton}`}
-            variant="white"
-            size="lg"
-            radius="xl"
-            onClick={goToNext}
-          >
-            <IconChevronRight size={20} />
-          </ActionIcon>
-
-          <div className={classes.dots}>
-            {items.map((_, index) => (
-              <button
-                key={index}
-                className={`${classes.dot} ${
-                  index === currentIndex ? classes.dotActive : ""
-                }`}
-                onClick={() => goToSlide(index)}
-              />
-            ))}
-          </div>
-        </>
-      )}
-    </div>
+          <Image
+            src={banner.image}
+            alt={banner.alt}
+            className={classes.bannerImage}
+            fallbackSrc="https://placehold.co/1520x480/ffe033/333333?text=Banner"
+          />
+        </Carousel.Slide>
+      ))}
+    </Carousel>
   );
 }

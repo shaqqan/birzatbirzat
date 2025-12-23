@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Stack } from "@mantine/core";
 import { BottomNavbar } from "@/components/ui/BottomNavbar/BottomNavbar";
 import { ProductCards } from "@/components/ui/ProductCards/ProductCards";
-import { Carousel } from "@/components/ui/Carousel/Carousel";
+import { BannerCarousel } from "@/components/ui/Carousel/Carousel";
 
 const frequentlyBoughtProducts = [
   {
@@ -16,24 +16,24 @@ const frequentlyBoughtProducts = [
   {
     id: 2,
     image:
-      "https://yastatic.net/avatars/get-grocery-goods/2750890/f387e932-ff15-4fb6-9897-6c77e1a48271/600x600?webp=true",
-    title: "Хлеб белый «Нарезной» 400 г",
+      "https://yastatic.net/avatars/get-grocery-goods/2783132/1a8a9267-325c-439c-bf8a-092772581c71/464x464-webp",
+    title: "Яйцо куриное С1 «Фермер Александров» от кур свободного выгула 9 шт.",
     price: 8900,
     weight: "400 г",
   },
   {
     id: 3,
     image:
-      "https://yastatic.net/avatars/get-grocery-goods/2750890/5102f255-bc19-4909-933a-4df4a1289e58/600x600?webp=true",
-    title: "Яйца куриные С1 10 шт",
+      "https://yastatic.net/avatars/get-grocery-goods/2888787/0f2f238e-0833-4d25-a58e-5108e1f45d62/464x464-webp",
+    title: "Лук репчатый 1 кг",
     price: 24900,
     weight: "10 шт",
   },
   {
     id: 4,
     image:
-      "https://yastatic.net/avatars/get-grocery-goods/2750890/f387e932-ff15-4fb6-9897-6c77e1a48271/600x600?webp=true",
-    title: "Масло сливочное 82,5% 180 г",
+      "https://yastatic.net/avatars/get-grocery-goods/2998515/04039977-a7d9-4577-a680-9b32862cc941/464x464-webp",
+    title: "Суповой набор говяжий «Из Лавки» охлаждённый 400 г",
     price: 32900,
     weight: "180 г",
   },
@@ -75,8 +75,8 @@ const discountProducts = [
   {
     id: 7,
     image:
-      "https://yastatic.net/avatars/get-grocery-goods/2750890/f387e932-ff15-4fb6-9897-6c77e1a48271/600x600?webp=true",
-    title: "Ржаной хлеб «Wasa Fiber»",
+      "https://yastatic.net/avatars/get-grocery-goods/2888787/0695d226-781c-4e2d-94ed-255d1fb2c37a/464x464-webp",
+    title: "Сыр Грюйер молодой «Сыроварня Липин Бор» 3 месяца выдержки 50% 180 г",
     price: 16990,
     discountPrice: 14490,
     weight: "230 г",
@@ -84,8 +84,8 @@ const discountProducts = [
   {
     id: 8,
     image:
-      "https://yastatic.net/avatars/get-grocery-goods/2750890/5102f255-bc19-4909-933a-4df4a1289e58/600x600?webp=true",
-    title: "Молоко 3,2–4,0% «Правильное молоко» 2 л",
+      "https://yastatic.net/avatars/get-grocery-goods/2888787/5f99b86c-7aef-482c-90af-920d0f849c75/464x464-webp",
+    title: "Хлеб Монж 280 г",
     price: 38900,
     discountPrice: 29900,
     weight: "2 л",
@@ -93,8 +93,8 @@ const discountProducts = [
   {
     id: 9,
     image:
-      "https://yastatic.net/avatars/get-grocery-goods/2750890/5102f255-bc19-4909-933a-4df4a1289e58/600x600?webp=true",
-    title: "Йогурт «Чудо» клубника 290 г",
+      "https://yastatic.net/avatars/get-grocery-goods/2750890/c1c68abe-ccf4-4f0a-ba7f-a0c0e31ef2c8/464x464-webp",
+    title: "Помидоры Пинк Чемпион 500 г",
     price: 14900,
     discountPrice: 11900,
     weight: "290 г",
@@ -102,8 +102,8 @@ const discountProducts = [
   {
     id: 10,
     image:
-      "https://yastatic.net/avatars/get-grocery-goods/2750890/f387e932-ff15-4fb6-9897-6c77e1a48271/600x600?webp=true",
-    title: "Творог 5% «Домик в деревне» 200 г",
+      "https://yastatic.net/avatars/get-grocery-goods/6247604/87b2eaff-e7dc-4932-9c97-30e6b97f8392/464x464-webp",
+    title: "Картофель отборный 2,5 кг",
     price: 19900,
     discountPrice: 15900,
     weight: "200 г",
@@ -120,8 +120,8 @@ const discountProducts = [
   {
     id: 12,
     image:
-      "https://yastatic.net/avatars/get-grocery-goods/2750890/f387e932-ff15-4fb6-9897-6c77e1a48271/600x600?webp=true",
-    title: "Сок «Добрый» яблоко 1 л",
+      "https://yastatic.net/avatars/get-grocery-goods/2791769/51ee53c0-055f-4ed3-99c9-1ff29a072374/464x464-webp",
+    title: "Морковь мытая 1 кг",
     price: 15900,
     discountPrice: 12900,
     weight: "1 л",
@@ -300,7 +300,7 @@ export function HomePage() {
 
   return (
     <Stack gap="xl">
-      <Carousel />
+      <BannerCarousel />
 
       <ProductCards
         title="Новогодняя скидка"

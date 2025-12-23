@@ -6,8 +6,14 @@ import {
   ActionIcon,
   Box,
   Divider,
+  Flex,
 } from "@mantine/core";
-import { IconMinus, IconPlus, IconInfoCircle } from "@tabler/icons-react";
+import {
+  IconMinus,
+  IconPlus,
+  IconInfoCircle,
+  IconTruck,
+} from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import classes from "./Basket.module.css";
 
@@ -27,8 +33,8 @@ const basketItems: BasketItem[] = [
     name: "Молоко 3,2% «Домик в деревне» 930 мл",
     image:
       "https://yastatic.net/avatars/get-grocery-goods/2750890/f387e932-ff15-4fb6-9897-6c77e1a48271/600x600?webp=true",
-    price: 999000,
-    oldPrice: 899000,
+    price: 89000,
+    oldPrice: 99000,
     quantity: 1,
     unit: "500 мл",
   },
@@ -217,14 +223,11 @@ export function Basket() {
   return (
     <div className={classes.basket}>
       <div className={classes.header}>
-        <Group justify="space-between" align="center">
-          <div>
-            <Group gap={8} align="baseline">
-              <Text className={classes.deliveryTime}>5-15 min</Text>
-              <Text className={classes.itemCount}>{itemCount} товаров</Text>
-            </Group>
-            <Text className={classes.deliveryNote}>Доставка бесплатна</Text>
-          </div>
+        <Group justify="space-between" align="center" mb={16}>
+          <Flex>
+            <Text className={classes.deliveryTime}>Корзина</Text>
+            <Text className={classes.itemCount}>({itemCount})</Text>
+          </Flex>
           <ActionIcon
             variant="subtle"
             color="gray"
@@ -254,7 +257,11 @@ export function Basket() {
               <Box className={classes.productInfo}>
                 <Text className={classes.productName}>{item.name}</Text>
                 <div className={classes.priceRow}>
-                  <Text className={classes.price}>
+                  <Text
+                    className={
+                      item.oldPrice ? classes.priceDiscount : classes.price
+                    }
+                  >
                     {formatPrice(item.price)} сум
                   </Text>
                   {item.oldPrice && (
@@ -273,7 +280,7 @@ export function Basket() {
                   size={28}
                   className={classes.quantityButton}
                 >
-                  <IconMinus size={18} stroke={2} />
+                  <IconMinus size={24} stroke={2} />
                 </ActionIcon>
                 <Text className={classes.quantity}>{item.quantity}</Text>
                 <ActionIcon
@@ -282,7 +289,7 @@ export function Basket() {
                   size={28}
                   className={classes.quantityButton}
                 >
-                  <IconPlus size={18} stroke={2} />
+                  <IconPlus size={24} stroke={2} />
                 </ActionIcon>
               </div>
             </div>
@@ -294,16 +301,34 @@ export function Basket() {
       </Stack>
 
       <div className={classes.footer}>
-        <button className={classes.checkoutButton} onClick={() => navigate("/checkout")}>
+        <div className={classes.footerInfo}>
+          <div className={classes.footerInfoLeft}>
+            <div className={classes.footerIcon}>
+              <IconTruck size={20} stroke={1.5} />
+            </div>
+            <div className={classes.footerTextGroup}>
+              <span className={classes.footerDeliveryTime}>5-15 мин</span>
+              <span className={classes.footerDeliveryNote}>
+                Бесплатная доставка
+              </span>
+            </div>
+          </div>
+        </div>
+        <button
+          className={classes.checkoutButton}
+          onClick={() => navigate("/checkout")}
+        >
           <span className={classes.checkoutContent}>
-            <span className={classes.checkoutText}>Оформить</span>
+            <span className={classes.checkoutLeft}>
+              <span className={classes.checkoutText}>Оформить</span>
+            </span>
             <span className={classes.priceGroup}>
               <span className={classes.totalPrice}>
-                {formatPrice(totalPrice)} so'm
+                {formatPrice(totalPrice)} сум
               </span>
               {hasSavings && (
                 <span className={classes.totalOldPrice}>
-                  {formatPrice(totalOldPrice)} so'm
+                  {formatPrice(totalOldPrice)} сум
                 </span>
               )}
             </span>
