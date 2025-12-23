@@ -1,0 +1,49 @@
+.pageTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--mantine-color-dark-9);
+}
+
+.itemCount {
+  font-size: 14px;
+  color: var(--mantine-color-gray-6);
+}
+
+/* Empty State */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px;
+  text-align: center;
+  background-color: var(--mantine-color-gray-0);
+}
+
+.emptyIconWrapper {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background-color: var(--mantine-color-red-0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.emptyIcon {
+  color: var(--mantine-color-red-4);
+}
+
+.emptyTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+  margin-bottom: 8px;
+}
+
+.emptyDescription {
+  font-size: 14px;
+  color: var(--mantine-color-gray-6);
+  max-width: 280px;
+}

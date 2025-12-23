@@ -1,0 +1,36 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  background-color: #FAFAFA;
+  border-radius: 12px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1;
+}
+
+.title {
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #212121;
+  line-height: 1.3;
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.image {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}

@@ -1,0 +1,475 @@
+.container {
+  display: flex;
+  gap: 24px;
+  padding: 24px 24px;
+}
+
+.mainContent {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Header with breadcrumbs */
+.header {
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.backButton {
+  flex-shrink: 0;
+}
+
+.breadcrumbs {
+  flex: 1;
+  overflow: hidden;
+}
+
+.breadcrumbLink {
+  font-size: 14px;
+  color: var(--mantine-color-gray-6);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbLink:hover {
+  color: var(--mantine-color-primary-4);
+}
+
+.breadcrumbLink:last-child {
+  color: var(--mantine-color-dark-9);
+  font-weight: 500;
+}
+
+.pageTitle {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--mantine-color-dark-9);
+  margin-bottom: 32px;
+  padding-left: 8px;
+}
+
+/* Form Card */
+.formCard {
+  background-color: var(--mantine-color-white);
+  padding-top: 32px;
+  padding-left: 8px;
+}
+
+.formSection {
+  /* Section spacing handled by Divider */
+}
+
+.sectionTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--mantine-color-dark-9);
+}
+
+.inputLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mantine-color-dark-6);
+  margin-bottom: 6px;
+}
+
+/* Address Button */
+.addressButton {
+  width: 100%;
+  padding: 16px;
+  background-color: var(--mantine-color-gray-0);
+  border-radius: 12px;
+  margin-top: 16px;
+  transition: background-color 0.2s ease;
+}
+
+.addressButton:hover {
+  background-color: var(--mantine-color-gray-1);
+}
+
+.addressIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: var(--mantine-color-primary-0);
+  color: var(--mantine-color-primary-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.addressContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.addressText {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mantine-color-dark-9);
+  line-height: 1.4;
+}
+
+.addressPlaceholder {
+  font-size: 14px;
+  color: var(--mantine-color-gray-5);
+}
+
+.chevron {
+  color: var(--mantine-color-gray-5);
+  flex-shrink: 0;
+}
+
+/* Radio Styles */
+.radio {
+  border-color: var(--mantine-color-gray-3);
+}
+
+/* Time Slots */
+.timeSlots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.timeSlot {
+  position: relative;
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.2s ease;
+  background-color: var(--mantine-color-white);
+}
+
+.timeSlot:hover {
+  border-color: var(--mantine-color-gray-4);
+}
+
+.timeSlotActive {
+  border-color: var(--mantine-color-primary-4);
+  background-color: var(--mantine-color-primary-0);
+}
+
+.timeSlotLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+}
+
+.timeSlotTime {
+  font-size: 12px;
+  color: var(--mantine-color-gray-6);
+  margin-top: 4px;
+}
+
+.timeSlotCheck {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: var(--mantine-color-primary-4);
+}
+
+/* Payment Methods */
+.paymentMethods {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.paymentMethod {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--mantine-color-gray-2);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  background-color: var(--mantine-color-white);
+}
+
+.paymentMethod:hover {
+  border-color: var(--mantine-color-gray-4);
+}
+
+.paymentMethodActive {
+  border-color: var(--mantine-color-primary-4);
+  background-color: var(--mantine-color-primary-0);
+}
+
+.paymentIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background-color: var(--mantine-color-gray-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mantine-color-gray-7);
+  flex-shrink: 0;
+}
+
+.paymentMethodActive .paymentIcon {
+  background-color: var(--mantine-color-primary-1);
+  color: var(--mantine-color-primary-4);
+}
+
+.paymentInfo {
+  flex: 1;
+}
+
+.paymentTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+}
+
+.paymentDescription {
+  font-size: 13px;
+  color: var(--mantine-color-gray-6);
+  margin-top: 2px;
+}
+
+.paymentCheck {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--mantine-color-primary-4);
+  color: var(--mantine-color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Comment */
+.commentInput {
+  background-color: var(--mantine-color-gray-0);
+  border-color: var(--mantine-color-gray-2);
+  min-height: 140px;
+}
+
+.commentInput:focus {
+  border-color: var(--mantine-color-primary-4);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 380px;
+  flex-shrink: 0;
+  position: sticky;
+  top: calc(var(--header-height) + 24px);
+  align-self: flex-start;
+}
+
+.summaryCard {
+  background-color: var(--mantine-color-white);
+}
+
+.summaryTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+}
+
+.itemCount {
+  font-size: 14px;
+  color: var(--mantine-color-gray-6);
+}
+
+/* Cart Items */
+.cartItems {
+  max-height: 300px;
+  overflow-y: auto;
+  margin: 0 -8px;
+  padding: 0 8px;
+}
+
+.cartItems::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cartItems::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cartItems::-webkit-scrollbar-thumb {
+  background-color: var(--mantine-color-gray-3);
+  border-radius: 2px;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--mantine-color-gray-1);
+}
+
+.cartItem:last-child {
+  border-bottom: none;
+}
+
+.cartItemImage {
+  flex-shrink: 0;
+  background-color: var(--mantine-color-gray-0);
+  border-radius: 8px;
+}
+
+.cartItemInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.cartItemName {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--mantine-color-dark-9);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cartItemPrice {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+}
+
+.cartItemOldPrice {
+  font-size: 12px;
+  color: var(--mantine-color-gray-5);
+  text-decoration: line-through;
+}
+
+/* Quantity Control */
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--mantine-color-gray-0);
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.quantityButton {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--mantine-color-dark-9);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.quantityButton:hover {
+  background-color: var(--mantine-color-gray-2);
+}
+
+.quantity {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Summary */
+.summaryLabel {
+  font-size: 14px;
+  color: var(--mantine-color-gray-6);
+}
+
+.summaryValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mantine-color-dark-9);
+}
+
+.savingsValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mantine-other-success);
+}
+
+.freeDelivery {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mantine-other-success);
+}
+
+.totalLabel {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+}
+
+.totalValue {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--mantine-color-dark-9);
+}
+
+/* Submit Button */
+.submitButton {
+  height: 52px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.submitButton:disabled {
+  background-color: var(--mantine-color-gray-3);
+  color: var(--mantine-color-gray-6);
+}
+
+/* Delivery Note */
+.deliveryIcon {
+  color: var(--mantine-color-gray-5);
+}
+
+.deliveryNote {
+  font-size: 13px;
+  color: var(--mantine-color-gray-6);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 340px;
+  }
+
+  .timeSlots {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: static;
+  }
+
+  .timeSlots {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .timeSlots {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

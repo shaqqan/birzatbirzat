@@ -1,0 +1,13 @@
+.badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: var(--mantine-primary-color-filled);
+  color: white;
+  padding: 0 4px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  transform: rotate(-4deg);
+  border: 2px solid white;
+}

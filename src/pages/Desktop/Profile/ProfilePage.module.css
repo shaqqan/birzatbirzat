@@ -1,0 +1,93 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--mantine-color-dark-9);
+}
+
+/* Avatar Section */
+.avatarSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.avatarWrapper {
+  position: relative;
+}
+
+.avatar {
+  border: 4px solid var(--mantine-color-gray-2);
+  transition: border-color 0.2s ease;
+}
+
+.avatarEditButton {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.userInfo {
+  text-align: center;
+}
+
+.userName {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+  margin-bottom: 4px;
+}
+
+.userMeta {
+  font-size: 14px;
+}
+
+/* Form Labels */
+.inputLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mantine-color-dark-6);
+}
+
+/* Segmented Control */
+.segmentedRoot {
+  background-color: var(--mantine-color-gray-1);
+}
+
+/* Details List (View Mode) */
+.detailsList {
+  background-color: var(--mantine-color-gray-0);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.detailItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--mantine-color-gray-2);
+}
+
+.detailItem:last-child {
+  border-bottom: none;
+}
+
+.detailLabel {
+  font-size: 14px;
+  color: var(--mantine-color-gray-6);
+}
+
+.detailValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mantine-color-dark-9);
+}

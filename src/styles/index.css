@@ -1,0 +1,64 @@
+/* SF Pro Fonts */
+@font-face {
+  font-family: 'SF Pro Display';
+  src: local('SF Pro Display Bold'), local('SFProDisplay-Bold');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: local('SF Pro Text Regular'), local('SFProText-Regular');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: local('SF Pro Text Medium'), local('SFProText-Medium');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: local('SF Pro Text Semibold'), local('SFProText-Semibold');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Global styles */
+
+:root {
+  --header-height: 72px;
+}
+
+@media (min-width: 576px) {
+  :root {
+    --header-height: 100px;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-height: 100px;
+  }
+}
+
+@media (min-width : 1024px) {
+  :root {
+    --header-height: 60px;
+  }
+}
+
+
+
+@media (min-width: 1600px) {
+  :root {
+    --header-height: 60px;
+  }
+}

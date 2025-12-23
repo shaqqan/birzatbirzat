@@ -1,0 +1,143 @@
+/* Main content */
+
+:root {
+  --navbar-width: 260px;
+  --aside-width: 260px;
+  --container-padding-x: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 auto;
+  padding: 10px var(--container-padding-x);
+}
+
+.navbar, .aside {
+  width: 100%;
+  border-radius: 12px;
+  min-height: calc(100vh - var(--header-height));
+  position: sticky;
+  top: calc(var(--header-height) + 10px);
+  flex-shrink: 0;
+  border: 1px solid #000;
+}
+
+.main {
+  flex-grow: 1;
+  border-radius: 12px;
+  padding: 5px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border: 1px solid #000;
+}
+
+/* Full width layout for checkout page */
+.fullWidth {
+  justify-content: center;
+}
+
+.fullWidth .main {
+  max-width: 1200px;
+  width: 100%;
+}
+
+
+/* ========================================
+   Responsive Breakpoints
+   ======================================== */
+
+/* Small Desktop: 1200px - 1399px */
+@media (min-width: 1200px) {
+  :root {
+    --navbar-width: 280px;
+    --aside-width: 280px;
+    --container-padding-x: 0px;
+  }
+
+  .container {
+    gap: 16px;
+  }
+}
+
+/* Medium Desktop: 1400px - 1599px */
+@media (min-width: 1400px) {
+  :root {
+    --navbar-width: 300px;
+    --aside-width: 300px;
+    --container-padding-x: 2px;
+  }
+
+  .container {
+    gap: 20px;
+  }
+}
+
+/* Large Desktop: 1600px - 1919px */
+@media (min-width: 1600px) {
+  :root {
+    --navbar-width: 320px;
+    --aside-width: 320px;
+    --container-padding-x: 48px;
+  }
+
+  .container {
+    gap: 24px;
+  }
+}
+
+/* Full HD: 1920px - 2559px */
+@media (min-width: 1920px) {
+  :root {
+    --navbar-width: 350px;
+    --aside-width: 350px;
+    --container-padding-x: 120px;
+  }
+
+  .container {
+    gap: 28px;
+  }
+}
+
+/* 2K/QHD: 2560px+ */
+@media (min-width: 2560px) {
+  :root {
+    --navbar-width: 380px;
+    --aside-width: 380px;
+    --container-padding-x:400px;
+  }
+
+  .container {
+    gap: 32px;
+  }
+}
+
+/* 4K/UHD: 3840px+ */
+@media (min-width: 3840px) {
+  :root {
+    --navbar-width: 420px;
+    --aside-width: 420px;
+    --container-padding-x: 200px;
+  }
+
+  .container {
+    gap: 40px;
+  }
+}

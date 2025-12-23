@@ -1,0 +1,38 @@
+{
+  "name": "rediska",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mantine/carousel": "^8.3.10",
+    "@mantine/core": "8.3.10",
+    "@mantine/dates": "^8.3.10",
+    "@mantine/hooks": "8.3.10",
+    "@tabler/icons-react": "^3.36.0",
+    "dayjs": "^1.11.19",
+    "embla-carousel-react": "^8.6.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-imask": "^7.6.1",
+    "react-router-dom": "^7.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.2",
+    "@yandex/ymaps3-types": "^1.0.18353609",
+    "postcss": "^8.5.6",
+    "postcss-preset-mantine": "1.18.0",
+    "postcss-simple-vars": "^7.0.1",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5"
+  },
+  "packageManager": "yarn@4.12.0"
+}
