@@ -2,10 +2,10 @@
   height: var(--header-height);
   position: sticky;
   top: 0;
-  background: #fff;
+  background: #FFFF;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
   z-index: 100;
-  padding: 0 var(--container-padding-x);
+  padding: 0;
 }
 
 .headerContent {
@@ -13,7 +13,7 @@
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  padding: 0 20px;
+  /* padding: 0 20px; */
 }
 
 .headerLeft {

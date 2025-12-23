@@ -18,8 +18,9 @@
 .items {
   flex: 1;
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--mantine-color-gray-3) transparent;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  --webkit-scrollbar-width: none;
 }
 
 .items::-webkit-scrollbar {

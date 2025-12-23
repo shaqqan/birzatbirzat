@@ -12,37 +12,31 @@ export function DesktopLayout() {
 
   return (
     <div className={classes.layout}>
+      <Header />
+      <Grid className={`${classes.layoutContent} container`} mb={{ base: 20, md: 30, lg: 40 }}>
+        <Grid.Col span={8 / 3}>
+          {!isCheckoutPage && (
+            <div className={classes.navbar}>
+              <Catalog />
+            </div>
+          )}
+        </Grid.Col>
 
-      <div
-        className={`${classes.container} ${
-          isCheckoutPage ? classes.fullWidth : ""
-        }`}
-      >
-        <Header />
-        <Grid>
-          <Grid.Col span={2}>
-            {!isCheckoutPage && (
-              <div className={classes.navbar}>
-                <Catalog />
-              </div>
-            )}
-          </Grid.Col>
+        <Grid.Col span={isCheckoutPage ? 28 / 3 : 20 / 3}>
+          <div className={classes.main}>
+            <Outlet />
+          </div>
+        </Grid.Col>
 
-          <Grid.Col span={8}>
-            <div className={classes.main}>
-              <Outlet />
+        {!isCheckoutPage && (
+          <Grid.Col span={8 / 3}>
+            <div className={classes.aside}>
+              <Basket />
             </div>
           </Grid.Col>
+        )}
+      </Grid>
 
-          <Grid.Col span={2}>
-            {!isCheckoutPage && (
-              <div className={classes.aside}>
-                <Basket />
-              </div>
-            )}
-          </Grid.Col>
-        </Grid>
-      </div>
       <Footer />
     </div>
   );

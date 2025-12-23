@@ -39,9 +39,9 @@
 .items {
   padding: 0 8px;
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--mantine-color-gray-3) transparent;
-  flex-grow: 1;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  --webkit-scrollbar-width: none;
 }
 
 .items::-webkit-scrollbar {
@@ -167,7 +167,7 @@
 
 /* Footer */
 .footer {
-  padding: 12px 16px 16px;
+  padding: 16px 0px 0px;
 }
 
 .savingsBar {

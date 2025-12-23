@@ -49,7 +49,7 @@ export function Header() {
 
   return (
     <header className={classes.header}>
-      <div className={classes.headerContent}>
+      <div className={`${classes.headerContent} container`}>
         <div className={classes.headerLeft}>
           <img src="/logo/full-logo.svg" alt="logo" />
           <Input

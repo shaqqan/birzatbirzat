@@ -21,6 +21,7 @@ export interface ProductCardProps {
   onQuantityChange?: (quantity: number) => void;
   isFavorite?: boolean;
   onFavoriteToggle?: () => void;
+  fullWidth?: boolean;
 }
 
 export const ProductCard = ({
@@ -34,6 +35,7 @@ export const ProductCard = ({
   onQuantityChange,
   isFavorite = false,
   onFavoriteToggle,
+  fullWidth = false,
 }: ProductCardProps) => {
   const navigate = useNavigate();
   const [favorite, setFavorite] = useState(isFavorite);
@@ -73,7 +75,7 @@ export const ProductCard = ({
     <div
       className={classes.card}
       onClick={handleCardClick}
-      style={{ cursor: id ? "pointer" : "default" }}
+      style={{ cursor: id ? "pointer" : "default" , width : fullWidth ? '100%' : undefined}}
     >
       <div className={classes.imageContainer}>
         <Image src={image} alt={title} className={classes.image} />

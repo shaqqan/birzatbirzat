@@ -1,4 +1,4 @@
-import { Text, Group } from "@mantine/core";
+import { Text, Group, Grid } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import { ProductCard } from "../ProductCard/ProductCard";
 import classes from "./ProductCards.module.css";
@@ -37,6 +37,7 @@ export function ProductCards({
           justify="space-between"
           align="center"
           className={classes.header}
+          gap={10}
         >
           <Text className={classes.title}>{title}</Text>
           <div className={classes.viewAll}>
@@ -60,18 +61,18 @@ export function ProductCards({
         >
           {items.map((item, index) => (
             <Carousel.Slide key={index}>
-              <ProductCard {...item} />
+              <ProductCard {...item}/>
             </Carousel.Slide>
           ))}
         </Carousel>
       ) : (
-        <div className={classes.grid}>
+        <Grid gutter={10}>
           {items.map((item, index) => (
-            <div key={index} className={classes.gridItem}>
-              <ProductCard {...item} />
-            </div>
+            <Grid.Col span={{base : 12, md: 4, lg: 4, xl: 3}} key={index} className={classes.gridItem}>
+              <ProductCard {...item}  fullWidth/>
+            </Grid.Col>
           ))}
-        </div>
+        </Grid>
       )}
     </div>
   );
