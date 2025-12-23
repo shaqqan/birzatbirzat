@@ -44,10 +44,10 @@ interface CarouselProps {
 export function BannerCarousel({
   items = banners,
   autoPlay = true,
-  autoPlayInterval = 5000,
+  autoPlayInterval = 100,
 }: CarouselProps) {
   const autoplay = useRef(
-    Autoplay({ delay: autoPlayInterval, stopOnInteraction: false })
+    Autoplay({ delay: autoPlayInterval, stopOnInteraction: true })
   );
 
   const handleBannerClick = (banner: Banner) => {
@@ -58,11 +58,15 @@ export function BannerCarousel({
 
   return (
     <Carousel
-      withIndicators
+      slideSize="70%"
+      emblaOptions={{
+        loop: true,
+      }}
+      slideGap="md"
       classNames={classes}
       plugins={autoPlay ? [autoplay.current] : []}
-      onMouseEnter={autoplay.current.stop}
-      onMouseLeave={autoplay.current.reset}
+      onMouseEnter={() => autoplay.current.stop()}
+      onMouseLeave={() => autoplay.current.reset()}
     >
       {items.map((banner) => (
         <Carousel.Slide
