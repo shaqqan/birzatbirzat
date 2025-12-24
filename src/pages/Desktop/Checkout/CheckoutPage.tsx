@@ -31,6 +31,8 @@ import {
   IconCheck,
   IconMinus,
   IconPlus,
+  IconTicket,
+  IconX,
 } from "@tabler/icons-react";
 import { IMaskInput } from "react-imask";
 import { AddressModal } from "@/components/ui/AddressModal/AddressModal";
@@ -112,6 +114,12 @@ export function CheckoutPage() {
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("cash");
   const [comment, setComment] = useState("");
   const [items, setItems] = useState<CartItem[]>(cartItems);
+  const [promoCode, setPromoCode] = useState("");
+  const [appliedPromo, setAppliedPromo] = useState<{
+    code: string;
+    discount: number;
+  } | null>(null);
+  const [promoError, setPromoError] = useState("");
 
   const handleAddressConfirm = useCallback((newAddress: string) => {
     setAddress(newAddress);
@@ -129,6 +137,34 @@ export function CheckoutPage() {
     );
   }, []);
 
+  // Mock promo codes
+  const validPromoCodes: Record<string, number> = {
+    SALE10: 10,
+    SALE20: 20,
+    WELCOME: 15,
+    VIP50: 50,
+  };
+
+  const handleApplyPromo = useCallback(() => {
+    const code = promoCode.trim().toUpperCase();
+    if (!code) {
+      setPromoError("Promokodni kiriting");
+      return;
+    }
+    if (validPromoCodes[code]) {
+      setAppliedPromo({ code, discount: validPromoCodes[code] });
+      setPromoError("");
+      setPromoCode("");
+    } else {
+      setPromoError("Noto'g'ri promokod");
+    }
+  }, [promoCode]);
+
+  const handleRemovePromo = useCallback(() => {
+    setAppliedPromo(null);
+    setPromoError("");
+  }, []);
+
   const subtotal = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
@@ -138,8 +174,11 @@ export function CheckoutPage() {
     0
   );
   const savings = oldSubtotal - subtotal;
+  const promoDiscount = appliedPromo
+    ? Math.round((subtotal * appliedPromo.discount) / 100)
+    : 0;
   const deliveryFee = 0;
-  const total = subtotal + deliveryFee;
+  const total = subtotal - promoDiscount + deliveryFee;
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
   const isFormValid =
@@ -456,6 +495,57 @@ export function CheckoutPage() {
               ))}
             </div>
 
+            {/* Promo Code */}
+            <div className={classes.promoSection}>
+              {appliedPromo ? (
+                <div className={classes.appliedPromo}>
+                  <Group gap="xs">
+                    <IconTicket size={18} className={classes.promoIcon} />
+                    <div>
+                      <Text className={classes.promoAppliedText}>
+                        Promokod: {appliedPromo.code}
+                      </Text>
+                      <Text className={classes.promoDiscountText}>
+                        -{appliedPromo.discount}% chegirma
+                      </Text>
+                    </div>
+                  </Group>
+                  <ActionIcon
+                    variant="subtle"
+                    color="gray"
+                    size="sm"
+                    onClick={handleRemovePromo}
+                  >
+                    <IconX size={16} />
+                  </ActionIcon>
+                </div>
+              ) : (
+                <div className={classes.promoInputWrapper}>
+                  <TextInput
+                    placeholder="Promokod kiriting"
+                    value={promoCode}
+                    onChange={(e) => {
+                      setPromoCode(e.target.value);
+                      setPromoError("");
+                    }}
+                    onKeyDown={(e) => e.key === "Enter" && handleApplyPromo()}
+                    leftSection={<IconTicket size={18} />}
+                    error={promoError}
+                    classNames={{
+                      input: classes.promoInputField,
+                    }}
+                  />
+                  <Button
+                    variant="light"
+                    onClick={handleApplyPromo}
+                    className={classes.promoButton}
+                  >
+                    Qo'llash
+                  </Button>
+                </div>
+              )}
+            </div>
+
             <Divider my="md" />
 
             <Stack gap="xs">
@@ -470,6 +560,14 @@ export function CheckoutPage() {
                   <Text className={classes.summaryLabel}>Скидка</Text>
                   <Text className={classes.savingsValue}>
                     -{formatPrice(savings)} сум
+                  </Text>
+                </Group>
+              )}
+              {promoDiscount > 0 && (
+                <Group justify="space-between">
+                  <Text className={classes.summaryLabel}>Promokod ({appliedPromo?.code})</Text>
+                  <Text className={classes.savingsValue}>
+                    -{formatPrice(promoDiscount)} сум
                   </Text>
                 </Group>
               )}

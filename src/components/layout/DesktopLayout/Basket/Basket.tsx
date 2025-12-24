@@ -40,9 +40,9 @@ const basketItems: BasketItem[] = [
   },
   {
     id: "2",
-    name: "Product 2",
+    name: "Вишня в шоколаде «Лавка 100» замороженная 150 г",
     image:
-      "https://yastatic.net/avatars/get-grocery-goods/2750890/5102f255-bc19-4909-933a-4df4a1289e58/600x600?webp=true",
+      "https://yastatic.net/avatars/get-grocery-goods/6247604/83670066-12d2-4f57-8849-3ee108dafef8/464x464-webp",
     price: 200,
     oldPrice: 250,
     quantity: 1,

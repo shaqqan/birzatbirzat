@@ -9,6 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import classes from "./ProductCard.module.css";
 import { DiscountBadge } from "../DiscountBadge/DiscountBadge";
+import { HitBadge } from "../HitBadge/HitBadge";
 
 export interface ProductCardProps {
   id?: number;
@@ -22,6 +23,8 @@ export interface ProductCardProps {
   isFavorite?: boolean;
   onFavoriteToggle?: () => void;
   fullWidth?: boolean;
+  isHit?: boolean;
+  showDiscount?: boolean;
 }
 
 export const ProductCard = ({
@@ -36,6 +39,8 @@ export const ProductCard = ({
   isFavorite = false,
   onFavoriteToggle,
   fullWidth = false,
+  isHit = false,
+  showDiscount = true,
 }: ProductCardProps) => {
   const navigate = useNavigate();
   const [favorite, setFavorite] = useState(isFavorite);
@@ -75,11 +80,15 @@ export const ProductCard = ({
     <div
       className={classes.card}
       onClick={handleCardClick}
-      style={{ cursor: id ? "pointer" : "default" , width : fullWidth ? '100%' : undefined}}
+      style={{
+        cursor: id ? "pointer" : "default",
+        width: fullWidth ? "100%" : undefined,
+      }}
     >
       <div className={classes.imageContainer}>
         <Image src={image} alt={title} className={classes.image} />
-        <DiscountBadge discount={discountInPercent} />
+        {isHit && <HitBadge size="sm" />}
+        {showDiscount && <DiscountBadge discount={discountInPercent} />}
         <ActionIcon
           className={classes.favoriteButton}
           variant={favorite ? "filled" : "white"}

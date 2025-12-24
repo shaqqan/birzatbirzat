@@ -385,6 +385,62 @@
   text-align: center;
 }
 
+/* Promo Code */
+.promoSection {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--mantine-color-gray-3);
+}
+
+.promoInputWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.promoInputWrapper > div:first-child {
+  flex: 1;
+}
+
+.promoInputField {
+  background-color: var(--mantine-color-gray-0);
+  border-color: var(--mantine-color-gray-2);
+}
+
+.promoInputField:focus {
+  border-color: var(--mantine-color-primary-4);
+}
+
+.promoButton {
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+.appliedPromo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background-color: var(--mantine-color-green-0);
+  border: 1px solid var(--mantine-color-green-2);
+  border-radius: 10px;
+}
+
+.promoIcon {
+  color: var(--mantine-color-green-6);
+}
+
+.promoAppliedText {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+}
+
+.promoDiscountText {
+  font-size: 12px;
+  color: var(--mantine-color-green-7);
+  font-weight: 500;
+}
+
 /* Summary */
 .summaryLabel {
   font-size: 14px;

@@ -1,20 +1,23 @@
 .badge {
   position: absolute;
-  bottom: 10px;
+  top: 10px;
   left: 10px;
   z-index: 10;
-  background-color: var(--mantine-primary-color-filled);
+  background: #4294ff;
   color: white;
-  font-weight: 700;
+  font-weight: 800;
   transform: rotate(-4deg);
   border: 2px solid white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(108, 184, 255, 0.404);
 }
 
 /* Size: Small */
 .sm {
   padding: 0 4px;
   border-radius: 8px;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 /* Size: Medium (default) */
@@ -27,8 +30,8 @@
 
 /* Size: Large */
 .lg {
-  padding: 4px 12px;
+  padding: 4px 14px;
   border-radius: 14px;
-  font-size: 20px;
+  font-size: 16px;
   border-width: 3px;
 }

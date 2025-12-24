@@ -4,7 +4,7 @@ export const mockProduct: Product = {
   id: 1,
   image:
     "https://yastatic.net/avatars/get-grocery-goods/2750890/5102f255-bc19-4909-933a-4df4a1289e58/600x600?webp=true",
-  title: "Молоко 3,2% «Домик в деревне» 930 мл",
+  title: "Молоко 2,5% «Из Лавки» пастеризованное",
   price: 18900,
   discountPrice: 15900,
   weight: "930 мл",

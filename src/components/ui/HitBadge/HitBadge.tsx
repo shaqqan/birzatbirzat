@@ -1,8 +1,7 @@
 import { memo } from "react";
-import classes from "./DiscountBadge.module.css";
+import classes from "./HitBadge.module.css";
 
-export interface DiscountBadgeProps {
-  discount: number;
+export interface HitBadgeProps {
   size?: "sm" | "md" | "lg";
   bottom?: number | string;
   left?: number | string;
@@ -10,16 +9,13 @@ export interface DiscountBadgeProps {
   right?: number | string;
 }
 
-export const DiscountBadge = memo(function DiscountBadge({
-  discount,
+export const HitBadge = memo(function HitBadge({
   size = "md",
   bottom,
   left,
   top,
   right,
-}: DiscountBadgeProps) {
-  if (discount <= 0) return null;
-
+}: HitBadgeProps) {
   const positionStyle = {
     ...(bottom !== undefined && { bottom }),
     ...(left !== undefined && { left }),
@@ -29,7 +25,7 @@ export const DiscountBadge = memo(function DiscountBadge({
 
   return (
     <div className={`${classes.badge} ${classes[size]}`} style={positionStyle}>
-      <span>-{discount}%</span>
+      <span>HIT</span>
     </div>
   );
 });

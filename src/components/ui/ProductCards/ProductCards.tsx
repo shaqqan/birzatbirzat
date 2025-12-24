@@ -6,6 +6,7 @@ import { IconChevronRight } from "@tabler/icons-react";
 import "@mantine/carousel/styles.css";
 
 export interface ProductCardProps {
+  id?: number;
   image: string;
   title: string;
   weight?: string;
@@ -16,6 +17,8 @@ export interface ProductCardProps {
   currency?: string;
   quantity?: number;
   onQuantityChange?: (quantity: number) => void;
+  isHit?: boolean;
+  showDiscount?: boolean;
 }
 
 interface ProductCardsProps {
@@ -37,7 +40,7 @@ export function ProductCards({
           justify="space-between"
           align="center"
           className={classes.header}
-          gap={10}
+          gap={8}
         >
           <Text className={classes.title}>{title}</Text>
           <div className={classes.viewAll}>

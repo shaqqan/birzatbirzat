@@ -29,4 +29,8 @@ export interface ProductCardItem {
   weight?: string;
   quantity?: number;
   onQuantityChange?: (qty: number) => void;
+  isHit?: boolean;
+  showDiscount?: boolean;
+  isFavorite?: boolean;
+  onFavoriteToggle?: () => void;
 }
