@@ -1,10 +1,9 @@
-import { useState, useEffect, useRef, Fragment } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
 import classes from "./MobileLayout.module.css";
-import { BottomNavbar } from "@/components/ui";
 
 export function MobileLayout() {
-  const [showHeader, setShowHeader] = useState(true);
+  const [, setShowHeader] = useState(true);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -28,20 +27,8 @@ export function MobileLayout() {
   }, []);
 
   return (
-    <Fragment>
-      <div
-        className={`${classes.header} ${
-          !showHeader ? classes.headerHidden : ""
-        }`}
-      >
-        Header
-      </div>
-
-      <div className={classes.main}>
-        <Outlet />
-      </div>
-
-      <BottomNavbar />
-    </Fragment>
+    <div className={classes.layout}>
+      <Outlet />
+    </div>
   );
 }

@@ -8,6 +8,7 @@ import { FavoritesPage } from "@/pages/Desktop/Favorites";
 import { CatalogPage } from "@/pages/Desktop/Catalog";
 import { CheckoutPage } from "@/pages/Desktop/Checkout";
 import { useDevice } from "@/hooks/useDevice";
+import { MobileHomePage } from "@/pages/Mobile/Home/MobileHomePage";
 
 // Placeholder component for now
 const PlaceholderPage = () => null;
@@ -56,7 +57,7 @@ const desktopRoutes = [
 const mobileRoutes = [
   {
     path: "/",
-    element: <div>Mobile</div>,
+    element: <MobileHomePage />,
   },
 ];
 

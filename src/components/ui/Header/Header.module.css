@@ -1,0 +1,22 @@
+.header {
+  height: var(--header-height);
+  position: sticky;
+  top: 0;
+  background-color: #FFFFFF;
+  box-shadow: var(--shadow-xs);
+  z-index: 100;
+  transition: transform var(--transition-slow);
+  will-change: transform;
+}
+
+.headerHidden {
+  transform: translateY(-100%);
+}
+
+.headerContent {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-md);
+}

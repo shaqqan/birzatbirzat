@@ -40,6 +40,9 @@
   --header-height: 72px;
   --container-max-width: 1600px;
 
+  /* Mobile Layout */
+  --mobile-bottom-navigation-height: 88px;
+
   /* Spacing Scale (4px base) */
   --space-xxs: 4px;
   --space-xs: 8px;

@@ -1,6 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
 import classes from "./BottomNavbar.module.css";
-import { useDevice } from "@/hooks/useDevice";
 import {
   IconHome,
   IconCategory,
@@ -38,12 +37,7 @@ const navlinks = [
 ];
 
 export function BottomNavbar() {
-  const { isMobile } = useDevice();
   const location = useLocation();
-
-  if (!isMobile) {
-    return null;
-  }
 
   return (
     <div className={classes.bottomNavbar}>
