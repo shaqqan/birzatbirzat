@@ -1,6 +1,5 @@
 import { useState, useCallback } from "react";
 import { Stack } from "@mantine/core";
-import { BottomNavbar } from "@/components/ui/BottomNavbar/BottomNavbar";
 import { ProductCards } from "@/components/ui/ProductCards/ProductCards";
 import { BannerCarousel } from "@/components/ui/Carousel/Carousel";
 import {
