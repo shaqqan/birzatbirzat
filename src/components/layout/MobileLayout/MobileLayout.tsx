@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, Fragment } from "react";
 import { Outlet } from "react-router-dom";
 import classes from "./MobileLayout.module.css";
+import { BottomNavbar } from "@/components/ui";
 
 export function MobileLayout() {
   const [showHeader, setShowHeader] = useState(true);
@@ -39,6 +40,8 @@ export function MobileLayout() {
       <div className={classes.main}>
         <Outlet />
       </div>
+
+      <BottomNavbar />
     </Fragment>
   );
 }

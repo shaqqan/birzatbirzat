@@ -1,9 +1,9 @@
 .badge {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: var(--space-xs);
+  left: var(--space-xs);
   z-index: 10;
-  background-color: var(--mantine-primary-color-filled);
+  background-color: var(--color-primary);
   color: white;
   font-weight: 700;
   transform: rotate(-4deg);
@@ -12,23 +12,23 @@
 
 /* Size: Small */
 .sm {
-  padding: 0 4px;
-  border-radius: 8px;
-  font-size: 12px;
+  padding: 0 var(--space-xxs);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
 }
 
 /* Size: Medium (default) */
 .md {
   padding: 0px 6px;
-  border-radius: 10px;
-  font-size: 14px;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-md);
   border-width: 3px;
 }
 
 /* Size: Large */
 .lg {
-  padding: 4px 12px;
-  border-radius: 14px;
-  font-size: 20px;
+  padding: var(--space-xxs) var(--space-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--text-2xl);
   border-width: 3px;
 }

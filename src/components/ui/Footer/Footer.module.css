@@ -1,12 +1,12 @@
 .footer {
-  background-color: var(--mantine-color-gray-0);
-  padding: 40px 0 20px;
+  background-color: var(--color-background);
+  padding: var(--space-3xl) 0 var(--space-lg);
 }
 
 .inner {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
+  gap: var(--space-2xl);
 }
 
 @media (max-width: 768px) {
@@ -32,15 +32,15 @@
 }
 
 .logo {
-  font-size: 24px;
+  font-size: var(--text-3xl);
   font-weight: 700;
-  color: var(--mantine-color-primary-5);
+  color: var(--color-primary);
 }
 
 .sectionTitle {
   font-weight: 600;
-  font-size: 14px;
-  margin-bottom: 12px;
+  font-size: var(--text-md);
+  margin-bottom: var(--space-sm);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -49,27 +49,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--mantine-color-gray-1);
-  color: var(--mantine-color-gray-7);
-  transition: all 0.2s ease;
+  width: var(--size-sm);
+  height: var(--size-sm);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  color: var(--color-text-secondary);
+  transition: all var(--transition-normal);
 }
 
 .socialLink:hover {
-  background-color: var(--mantine-color-green-6);
+  background-color: var(--color-success);
   color: white;
 }
 
 .bottom {
-  padding-top: 16px;
+  padding-top: var(--space-md);
 }
 
 @media (max-width: 480px) {
   .bottom {
     flex-direction: column;
-    gap: 8px;
+    gap: var(--space-xs);
     text-align: center;
   }
 }

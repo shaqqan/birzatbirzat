@@ -57,7 +57,7 @@ export function ProductCards({
       {variant === "horizontal" ? (
         <Carousel
           slideSize={{ base: "50%", sm: "33.33%", md: "25%", lg: "25%", xl: "20%" }}
-          slideGap="md"
+          slideGap="sm"
           classNames={{
             control: classes.carouselControl,
           }}

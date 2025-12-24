@@ -44,7 +44,7 @@ interface CarouselProps {
 export function BannerCarousel({
   items = banners,
   autoPlay = true,
-  autoPlayInterval = 100,
+  autoPlayInterval = 4000,
 }: CarouselProps) {
   const autoplay = useRef(
     Autoplay({ delay: autoPlayInterval, stopOnInteraction: true })

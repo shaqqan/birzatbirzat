@@ -31,17 +31,103 @@
   font-display: swap;
 }
 
-/* Global styles */
+/* ============================================
+   DESIGN SYSTEM - CSS Custom Properties
+   ============================================ */
 
 :root {
+  /* Layout */
   --header-height: 72px;
+  --container-max-width: 1600px;
+
+  /* Spacing Scale (4px base) */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 20px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 40px;
+  --space-4xl: 48px;
+  --space-5xl: 64px;
+
+  /* Border Radius Scale */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.15);
+
+  /* Font Sizes */
+  --text-xs: 10px;
+  --text-sm: 12px;
+  --text-md: 14px;
+  --text-lg: 16px;
+  --text-xl: 18px;
+  --text-2xl: 20px;
+  --text-3xl: 24px;
+  --text-4xl: 32px;
+  --text-5xl: 40px;
+
+  /* Line Heights */
+  --leading-xs: 14px;
+  --leading-sm: 16px;
+  --leading-md: 20px;
+  --leading-lg: 24px;
+  --leading-xl: 26px;
+  --leading-2xl: 28px;
+  --leading-3xl: 32px;
+  --leading-4xl: 40px;
+  --leading-5xl: 48px;
+
+  /* Component Heights */
+  --size-xs: 32px;
+  --size-sm: 40px;
+  --size-md: 48px;
+  --size-lg: 56px;
+  --size-xl: 64px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.2s ease;
+  --transition-slow: 0.3s ease;
+
+  /* Colors (semantic) */
+  --color-primary: #DA4957;
+  --color-primary-hover: #C43E4C;
+  --color-primary-active: #AE3441;
+
+  --color-success: #39B26F;
+  --color-warning: #E0AB37;
+  --color-error: #DA294A;
+
+  --color-background: #FAFAFA;
+  --color-surface: #F5F5F5;
+  --color-divider: #EEEEEE;
+  --color-border: #E0E0E0;
+  --color-disabled: #BDBDBD;
+  --color-placeholder: #9E9E9E;
+  --color-text-secondary: #757575;
+  --color-text-primary: #212121;
 }
+
+/* Global styles */
 
 .container {
   width: 100%;
   margin: 0 auto;
-  max-width: 1600px;
-  padding: 0 16px;
+  max-width: var(--container-max-width);
+  padding: 0 var(--space-md);
 }
 
 @media (min-width: 576px) {
@@ -56,7 +142,7 @@
   }
 
   .container {
-    padding: 0 32px;
+    padding: 0 var(--space-2xl);
   }
 }
 
@@ -65,10 +151,9 @@
     --header-height: 72px;
   }
   .container {
-    padding: 0 48px;
+    padding: 0 var(--space-4xl);
   }
 }
-
 
 @media (min-width: 1700px) {
   .container {
