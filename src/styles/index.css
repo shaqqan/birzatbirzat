@@ -38,7 +38,7 @@
 :root {
   /* Layout */
   --header-height: 72px;
-  --container-max-width: 1600px;
+  --container-max-width: 1500px;
 
   /* Mobile Layout */
   --mobile-bottom-navigation-height: 88px;

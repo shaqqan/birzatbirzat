@@ -15,12 +15,15 @@ import {
 export function HomePage() {
   const [quantities, setQuantities] = useState<Record<number, number>>({});
 
-  const handleQuantityChange = useCallback((productId: number, quantity: number) => {
-    setQuantities((prev) => ({
-      ...prev,
-      [productId]: Math.max(0, quantity),
-    }));
-  }, []);
+  const handleQuantityChange = useCallback(
+    (productId: number, quantity: number) => {
+      setQuantities((prev) => ({
+        ...prev,
+        [productId]: Math.max(0, quantity),
+      }));
+    },
+    []
+  );
 
   return (
     <Stack gap="xl">
@@ -28,30 +31,48 @@ export function HomePage() {
 
       <ProductCards
         title="Новогодняя скидка"
-        items={addQuantityHandlers(discountProducts, quantities, handleQuantityChange)}
+        items={addQuantityHandlers(
+          discountProducts,
+          quantities,
+          handleQuantityChange
+        )}
       />
 
       <ProductCards
         title="Часто покупают"
-        items={addQuantityHandlers(frequentlyBoughtProducts, quantities, handleQuantityChange)}
+        items={addQuantityHandlers(
+          frequentlyBoughtProducts,
+          quantities,
+          handleQuantityChange
+        )}
       />
 
       <ProductCards
         title="Популярное"
-        items={addQuantityHandlers(popularProducts, quantities, handleQuantityChange)}
+        items={addQuantityHandlers(
+          popularProducts,
+          quantities,
+          handleQuantityChange
+        )}
       />
 
       <ProductCards
         title="Новинки"
-        items={addQuantityHandlers(newProducts, quantities, handleQuantityChange)}
+        items={addQuantityHandlers(
+          newProducts,
+          quantities,
+          handleQuantityChange
+        )}
       />
 
       <ProductCards
         title="Недавно просмотренные"
-        items={addQuantityHandlers(recentlyViewedProducts, quantities, handleQuantityChange)}
+        items={addQuantityHandlers(
+          recentlyViewedProducts,
+          quantities,
+          handleQuantityChange
+        )}
       />
-
-      <BottomNavbar />
     </Stack>
   );
 }
