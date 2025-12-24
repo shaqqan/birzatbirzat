@@ -102,6 +102,13 @@
   --transition-normal: 0.2s ease;
   --transition-slow: 0.3s ease;
 
+  /* Icon Sizes */
+  --icon-xs: 12px;
+  --icon-sm: 16px;
+  --icon-md: 20px;
+  --icon-lg: 24px;
+  --icon-xl: 32px;
+
   /* Colors (semantic) */
   --color-primary: #DA4957;
   --color-primary-hover: #C43E4C;
