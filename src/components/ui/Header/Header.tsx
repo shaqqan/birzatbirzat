@@ -66,7 +66,7 @@ export function Header() {
         position="bottom"
         title="Мои адреса"
         size="xs"
-        radius="xl"
+        classNames={{ content: classes.drawerContent, title: classes.drawerTitle }}
       >
         {/* Drawer content */}
       </Drawer>

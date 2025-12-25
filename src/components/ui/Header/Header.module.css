@@ -41,5 +41,12 @@
 }
 
 .drawerContent {
-  border-radius: var(--mantine-radius-lg) var(--mantine-radius-lg) 0 0;
+  border-radius: var(--mantine-radius-xl) var(--mantine-radius-xl) 0 0;
+}
+
+.drawerTitle {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--mantine-color-gray-9);
 }
