@@ -122,6 +122,16 @@ export const theme = createTheme({
     '"SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
   fontFamilyMonospace: "Monaco, Courier, monospace",
 
+  // Breakpoints
+  breakpoints: {
+    xs: "0", // 0px
+    sm: "30em", // 480px
+    md: "48em", // 768px
+    lg: "64em", // 1024px
+    xl: "80em", // 1280px
+    xxl: "100em", // 1600px
+  },
+
   // Colors
   primaryColor: "primary",
   primaryShade: 4,
@@ -191,10 +201,22 @@ export const theme = createTheme({
       '"SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
     fontWeight: "700",
     sizes: {
-      h1: { fontSize: rem(fontSizes["5xl"]), lineHeight: rem(lineHeights["5xl"]) },
-      h2: { fontSize: rem(fontSizes["4xl"]), lineHeight: rem(lineHeights["4xl"]) },
-      h3: { fontSize: rem(fontSizes["3xl"]), lineHeight: rem(lineHeights["3xl"]) },
-      h4: { fontSize: rem(fontSizes["2xl"]), lineHeight: rem(lineHeights["2xl"]) },
+      h1: {
+        fontSize: rem(fontSizes["5xl"]),
+        lineHeight: rem(lineHeights["5xl"]),
+      },
+      h2: {
+        fontSize: rem(fontSizes["4xl"]),
+        lineHeight: rem(lineHeights["4xl"]),
+      },
+      h3: {
+        fontSize: rem(fontSizes["3xl"]),
+        lineHeight: rem(lineHeights["3xl"]),
+      },
+      h4: {
+        fontSize: rem(fontSizes["2xl"]),
+        lineHeight: rem(lineHeights["2xl"]),
+      },
       h5: { fontSize: rem(fontSizes.lg), lineHeight: rem(lineHeights.lg) },
       h6: { fontSize: rem(fontSizes.md), lineHeight: rem(lineHeights.md) },
     },

@@ -1,3 +1,7 @@
+.footer {
+  height: calc(var(--mobile-bottom-navigation-height) + var(--space-md));
+}
+
 .bottomNavbar {
   position: fixed;
   height: var(--mobile-bottom-navigation-height);
@@ -5,12 +9,12 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .root {
   height: 100%;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-top: 1px solid var(--color-divider);
   display: flex;
   align-items: center;

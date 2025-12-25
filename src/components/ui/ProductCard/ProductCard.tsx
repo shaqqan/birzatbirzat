@@ -25,6 +25,7 @@ export interface ProductCardProps {
   fullWidth?: boolean;
   isHit?: boolean;
   showDiscount?: boolean;
+  style?: React.CSSProperties;
 }
 
 export const ProductCard = ({

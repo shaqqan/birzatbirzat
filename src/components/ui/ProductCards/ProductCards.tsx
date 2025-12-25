@@ -58,9 +58,8 @@ export function ProductCards({
           slideSize={{
             base: "50%",
             sm: "33.33%",
-            md: "25%",
-            lg: "25%",
-            xl: "20%",
+
+            xl: "25%",
           }}
           slideGap="sm"
           classNames={{
@@ -77,7 +76,7 @@ export function ProductCards({
         <Grid gutter={10}>
           {items.map((item, index) => (
             <Grid.Col
-              span={{ base: 6, md: 4, lg: 4, xl: 3 }}
+              span={{ base: 6, sm: 4, xl: 3 }}
               key={index}
               className={classes.gridItem}
             >
