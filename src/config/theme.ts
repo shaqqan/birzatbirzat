@@ -270,5 +270,10 @@ export const theme = createTheme({
         radius: "sm",
       },
     },
+    Drawer: {
+      defaultProps: {
+        radius: "xl",
+      },
+    },
   },
 });

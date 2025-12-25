@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { ActionIcon, Text } from "@mantine/core";
-import { IconMapPin, IconSearch } from "@tabler/icons-react";
+import { ActionIcon, Button, Drawer } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import { IconChevronDown, IconMapPin, IconMenu2 } from "@tabler/icons-react";
 import classes from "./Header.module.css";
 
 export function Header() {
   const [isHidden, setIsHidden] = useState(false);
+  const [opened, { open, close }] = useDisclosure(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -32,25 +34,42 @@ export function Header() {
   }, []);
 
   return (
-    <header
-      className={`${classes.header} ${isHidden ? classes.headerHidden : ""}`}
-    >
-      <div className={classes.headerContent}>
-        <div className={classes.location}>
-          <IconMapPin size={20} className={classes.locationIcon} />
-          <div className={classes.locationText}>
-            <Text className={classes.deliveryLabel}>Доставка</Text>
-            <Text className={classes.address}>Выберите адрес</Text>
-          </div>
+    <>
+      <header
+        className={`${classes.header} ${isHidden ? classes.headerHidden : ""}`}
+      >
+        <div className={`${classes.headerContent} container`}>
+          <Button
+            variant="transparent"
+            size="xl"
+            radius="md"
+            className={classes.locationButton}
+            leftSection={<IconMapPin size={24} />}
+            rightSection={<IconChevronDown size={20} />}
+            onClick={open}
+          >
+            г. Ташкент, ул. Пушкина, 123
+          </Button>
+          <ActionIcon
+            variant="transparent"
+            size="xl"
+            className={classes.menuButton}
+          >
+            <IconMenu2 size={24} />
+          </ActionIcon>
         </div>
-        <ActionIcon
-          variant="transparent"
-          size="lg"
-          className={classes.searchButton}
-        >
-          <IconSearch size={24} />
-        </ActionIcon>
-      </div>
-    </header>
+      </header>
+
+      <Drawer
+        opened={opened}
+        onClose={close}
+        position="bottom"
+        title="Мои адреса"
+        size="xs"
+        radius="xl"
+      >
+        {/* Drawer content */}
+      </Drawer>
+    </>
   );
 }

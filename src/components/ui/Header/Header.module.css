@@ -2,7 +2,7 @@
   height: var(--header-height, 56px);
   position: sticky;
   top: 0;
-  background-color: var(--color-primary);
+  background-color: #ffffff;
   box-shadow: var(--shadow-xs);
   z-index: 100;
   transition: transform var(--transition-slow);
@@ -18,42 +18,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--space-md);
+  padding: 0px 0px;
 }
 
-.location {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  cursor: pointer;
+.locationButton {
+  color: var(--mantine-color-gray-9);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.3;
+
+  .mantine-Button-section[data-position="left"] {
+    color: var(--mantine-color-gray-6);
+  }
+
+  .mantine-Button-section[data-position="right"] {
+    color: var(--mantine-color-gray-9);
+  }
 }
 
-.locationIcon {
-  color: white;
+.menuButton {
+  color: var(--mantine-color-gray-9);
 }
 
-.locationText {
-  display: flex;
-  flex-direction: column;
-}
-
-.deliveryLabel {
-  font-size: var(--text-xs);
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.2;
-}
-
-.address {
-  font-size: var(--text-md);
-  font-weight: 600;
-  color: white;
-  line-height: 1.2;
-}
-
-.searchButton {
-  color: white;
-}
-
-.searchButton:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.drawerContent {
+  border-radius: var(--mantine-radius-lg) var(--mantine-radius-lg) 0 0;
 }
