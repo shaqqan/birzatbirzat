@@ -10,7 +10,7 @@ import {
   Anchor,
 } from "@mantine/core";
 import { IconChevronLeft } from "@tabler/icons-react";
-import { ProductCards } from "@/components/ui/ProductCards/ProductCards";
+import { ProductCards } from "@/features/products";
 import type { Product } from "@/types";
 import classes from "./CatalogPage.module.css";
 

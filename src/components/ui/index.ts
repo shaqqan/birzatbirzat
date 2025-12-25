@@ -1,40 +1,38 @@
-// Buttons
-export { Button, CartButton } from "./Button";
-export type { ButtonProps, CartButtonProps } from "./Button";
+// Re-export from features for backwards compatibility
+export {
+  ProductCard,
+  ProductCards,
+  CategoryCard,
+  DiscountBadge,
+  HitBadge,
+} from "@/features/products";
+export type {
+  ProductCardProps,
+  CategoryCardProps,
+  DiscountBadgeProps,
+  HitBadgeProps,
+} from "@/features/products";
 
-// Cards
-export { ProductCard } from "./ProductCard";
-export type { ProductCardProps } from "./ProductCard";
+export { QuantityCounter, CartButton, Basket } from "@/features/cart";
+export type { QuantityCounterProps, CartButtonProps } from "@/features/cart";
 
-export { CategoryCard } from "./CategoryCard";
-export type { CategoryCardProps } from "./CategoryCard";
+export { LoginModal } from "@/features/auth";
 
-// Product Lists
-export { ProductCards } from "./ProductCards/ProductCards";
+// Re-export from shared
+export { Button, Container, Section } from "@/components/shared";
+export type { ButtonProps, ContainerProps, SectionProps } from "@/components/shared";
 
-// Badges
-export { DiscountBadge } from "./DiscountBadge/DiscountBadge";
-export type { DiscountBadgeProps } from "./DiscountBadge/DiscountBadge";
-
-export { HitBadge } from "./HitBadge/HitBadge";
-export type { HitBadgeProps } from "./HitBadge/HitBadge";
-
-// Sections
-export { Section } from "./Section";
-export type { SectionProps } from "./Section";
-
-// Sliders & Carousels
+// Sliders & Carousels (still in ui/)
 export { BannerSlider } from "./BannerSlider";
 export type { BannerSliderProps, BannerItem } from "./BannerSlider";
 
 export { BannerCarousel } from "./Carousel/Carousel";
 
-// Navigation
+// Navigation (still in ui/)
 export { BottomNavbar } from "./BottomNavbar/BottomNavbar";
 
-// Layout
+// Layout (still in ui/)
 export { Footer } from "./Footer";
 
-// Modals
+// Modals (still in ui/)
 export { AddressModal } from "./AddressModal/AddressModal";
-export { LoginModal } from "./LoginModal/LoginModal";

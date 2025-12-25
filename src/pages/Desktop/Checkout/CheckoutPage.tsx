@@ -35,7 +35,7 @@ import {
   IconX,
 } from "@tabler/icons-react";
 import { IMaskInput } from "react-imask";
-import { AddressModal } from "@/components/ui/AddressModal/AddressModal";
+import { AddressModal } from "@/components/ui";
 import classes from "./CheckoutPage.module.css";
 
 interface CartItem {

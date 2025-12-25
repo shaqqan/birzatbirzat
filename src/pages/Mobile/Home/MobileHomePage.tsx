@@ -1,12 +1,13 @@
-import { BottomNavbar, ProductCards } from "@/components/ui";
-import { Header } from "../../../components/ui/Header/Header";
+import { BottomNavbar } from "@/components/ui";
+import { Header } from "@/components/ui/Header/Header";
+import { ProductCards } from "@/features/products";
+import { Container } from "@/components/shared";
 import {
   addQuantityHandlers,
   discountProducts,
   frequentlyBoughtProducts,
 } from "@/mocks/products";
 import { useCallback, useState } from "react";
-import { Container } from "@/components/ui/Container/Container";
 
 export function MobileHomePage() {
   const [quantities, setQuantities] = useState<Record<number, number>>({});

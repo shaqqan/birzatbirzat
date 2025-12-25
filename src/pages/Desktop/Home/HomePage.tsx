@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { Stack } from "@mantine/core";
-import { ProductCards } from "@/components/ui/ProductCards/ProductCards";
+import { ProductCards } from "@/features/products";
 import { BannerCarousel } from "@/components/ui/Carousel/Carousel";
 import {
   frequentlyBoughtProducts,

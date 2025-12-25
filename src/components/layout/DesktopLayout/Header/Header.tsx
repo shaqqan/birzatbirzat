@@ -20,8 +20,8 @@ import {
   IconCreditCard,
   IconLogout,
 } from "@tabler/icons-react";
-import { AddressModal } from "@/components/ui/AddressModal";
-import { LoginModal } from "@/components/ui/LoginModal";
+import { AddressModal } from "@/components/ui";
+import { LoginModal } from "@/features/auth";
 import classes from "./Header.module.css";
 
 export function Header() {

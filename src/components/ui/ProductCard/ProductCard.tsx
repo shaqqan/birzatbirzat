@@ -1,15 +1,11 @@
 import { useState } from "react";
-import { Button, ActionIcon, Group, Image } from "@mantine/core";
-import {
-  IconMinus,
-  IconPlus,
-  IconHeart,
-  IconHeartFilled,
-} from "@tabler/icons-react";
+import { ActionIcon, Image } from "@mantine/core";
+import { IconHeart, IconHeartFilled } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import classes from "./ProductCard.module.css";
 import { DiscountBadge } from "../DiscountBadge/DiscountBadge";
 import { HitBadge } from "../HitBadge/HitBadge";
+import { QuantityCounter } from "../QuantityCounter";
 
 export interface ProductCardProps {
   id?: number;
@@ -52,18 +48,15 @@ export const ProductCard = ({
     }
   };
 
-  const handleAdd = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleAdd = () => {
     onQuantityChange?.(quantity + 1);
   };
 
-  const handleIncrement = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleIncrement = () => {
     onQuantityChange?.(quantity + 1);
   };
 
-  const handleDecrement = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleDecrement = () => {
     onQuantityChange?.(quantity - 1);
   };
 
@@ -128,36 +121,12 @@ export const ProductCard = ({
 
         {/* Counter Buttons */}
         <div className={classes.buttonContainer}>
-          {quantity === 0 ? (
-            <Button
-              variant="filled"
-              fullWidth
-              className={classes.button}
-              onClick={handleAdd}
-            >
-              В корзину
-            </Button>
-          ) : (
-            <Group className={classes.counter} justify="space-between">
-              <ActionIcon
-                variant="filled"
-                className={classes.counterButton}
-                onClick={handleDecrement}
-              >
-                <IconMinus size={16} />
-              </ActionIcon>
-
-              <span className={classes.quantity}>{quantity}</span>
-
-              <ActionIcon
-                variant="filled"
-                className={classes.counterButton}
-                onClick={handleIncrement}
-              >
-                <IconPlus size={16} />
-              </ActionIcon>
-            </Group>
-          )}
+          <QuantityCounter
+            quantity={quantity}
+            onIncrement={handleIncrement}
+            onDecrement={handleDecrement}
+            onAdd={handleAdd}
+          />
         </div>
       </div>
     </div>

@@ -9,10 +9,7 @@ import {
   Button,
 } from "@mantine/core";
 import { IconHeart, IconTrash } from "@tabler/icons-react";
-import {
-  ProductCards,
-  ProductCardProps,
-} from "@/components/ui/ProductCards/ProductCards";
+import { ProductCards, ProductCardProps } from "@/features/products";
 import classes from "./FavoritesPage.module.css";
 
 const initialFavorites: ProductCardProps[] = [
@@ -29,7 +26,7 @@ const initialFavorites: ProductCardProps[] = [
       "https://yastatic.net/avatars/get-grocery-goods/2750890/f387e932-ff15-4fb6-9897-6c77e1a48271/600x600?webp=true",
     title: "Хлеб белый «Нарезной» 400 г",
     price: 12900,
-    oldPrice: 8900,
+    discountPrice: 8900,
     weight: "400 г",
     quantity: 0,
   },
@@ -54,7 +51,7 @@ const initialFavorites: ProductCardProps[] = [
       "https://yastatic.net/avatars/get-grocery-goods/2750890/5102f255-bc19-4909-933a-4df4a1289e58/600x600?webp=true",
     title: "Сыр «Российский» 200 г",
     price: 54900,
-    oldPrice: 42900,
+    discountPrice: 42900,
     weight: "200 г",
     quantity: 0,
   },

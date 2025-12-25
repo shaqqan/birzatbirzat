@@ -16,8 +16,7 @@ import {
   IconPlus,
   IconShare,
 } from "@tabler/icons-react";
-import { ProductCards } from "@/components/ui/ProductCards/ProductCards";
-import { DiscountBadge } from "@/components/ui/DiscountBadge/DiscountBadge";
+import { ProductCards, DiscountBadge } from "@/features/products";
 import type { Product, ProductCardItem } from "@/types";
 import { mockProduct, productSections, nutritionConfig } from "./mockData";
 import classes from "./ProductDetailPage.module.css";

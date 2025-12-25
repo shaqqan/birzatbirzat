@@ -1,0 +1,46 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 56px;
+  padding-inline: 24px;
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #DA4957;
+  color: #FFFFFF;
+}
+
+.root:hover {
+  background-color: #C43E4C;
+}
+
+.root:active {
+  background-color: #AE3441;
+}
+
+.count {
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.price {
+  font-weight: 400;
+}
+
+/* Disabled state */
+.root[data-disabled] {
+  background-color: #EEEEEE;
+  color: #BDBDBD;
+  cursor: not-allowed;
+  pointer-events: none;
+}

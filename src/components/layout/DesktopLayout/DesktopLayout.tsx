@@ -2,7 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import classes from "./DesktopLayout.module.css";
 import { Header } from "./Header/Header";
 import { Catalog } from "./Catalog/Catalog";
-import { Basket } from "./Basket/Basket";
+import { Basket } from "@/features/cart";
 import { Footer } from "@/components/ui";
 import { Grid } from "@mantine/core";
 

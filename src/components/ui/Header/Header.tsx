@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import { ActionIcon, Text } from "@mantine/core";
+import { IconMapPin, IconSearch } from "@tabler/icons-react";
 import classes from "./Header.module.css";
 
 export function Header() {
@@ -8,21 +10,17 @@ export function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      const scrollThreshold = 10; // Minimal scroll to trigger
+      const scrollThreshold = 10;
 
-      // Don't hide if at the top
       if (currentScrollY < 50) {
         setIsHidden(false);
         lastScrollY.current = currentScrollY;
         return;
       }
 
-      // Check scroll direction
       if (currentScrollY > lastScrollY.current + scrollThreshold) {
-        // Scrolling down - hide header
         setIsHidden(true);
       } else if (currentScrollY < lastScrollY.current - scrollThreshold) {
-        // Scrolling up - show header
         setIsHidden(false);
       }
 
@@ -38,7 +36,20 @@ export function Header() {
       className={`${classes.header} ${isHidden ? classes.headerHidden : ""}`}
     >
       <div className={classes.headerContent}>
-        <h1>Header</h1>
+        <div className={classes.location}>
+          <IconMapPin size={20} className={classes.locationIcon} />
+          <div className={classes.locationText}>
+            <Text className={classes.deliveryLabel}>Доставка</Text>
+            <Text className={classes.address}>Выберите адрес</Text>
+          </div>
+        </div>
+        <ActionIcon
+          variant="transparent"
+          size="lg"
+          className={classes.searchButton}
+        >
+          <IconSearch size={24} />
+        </ActionIcon>
       </div>
     </header>
   );

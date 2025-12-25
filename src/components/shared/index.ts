@@ -1,2 +1,2 @@
-// Shared business components will be exported here
-export {};
+// Shared UI components
+export * from "./ui";

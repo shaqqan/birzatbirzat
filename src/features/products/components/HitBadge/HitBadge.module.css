@@ -1,0 +1,37 @@
+.badge {
+  position: absolute;
+  top: var(--space-xs);
+  left: var(--space-xs);
+  z-index: 10;
+  background: #4294ff;
+  color: white;
+  font-weight: 800;
+  transform: rotate(-4deg);
+  border: 2px solid white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Size: Small */
+.sm {
+  padding: 0 var(--space-xxs);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+}
+
+/* Size: Medium (default) */
+.md {
+  padding: 0px 6px;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-md);
+  border-width: 3px;
+}
+
+/* Size: Large */
+.lg {
+  padding: var(--space-xxs) var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: var(--text-lg);
+  border-width: 3px;
+}
