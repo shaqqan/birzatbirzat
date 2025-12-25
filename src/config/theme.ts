@@ -272,7 +272,18 @@ export const theme = createTheme({
     },
     Drawer: {
       defaultProps: {
-        radius: "xl",
+        position: "bottom",
+      },
+      styles: {
+        content: {
+          borderRadius: `${rem(radius.xl)} ${rem(radius.xl)} 0 0`,
+        },
+        title: {
+          fontWeight: 700,
+          fontSize: rem(fontSizes["2xl"]),
+          lineHeight: rem(lineHeights["2xl"]),
+          color: "var(--mantine-color-gray-9)",
+        },
       },
     },
   },

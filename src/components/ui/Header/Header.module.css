@@ -40,13 +40,60 @@
   color: var(--mantine-color-gray-9);
 }
 
+.drawerInner {
+  height: 100% !important;
+  align-items: flex-end;
+}
+
 .drawerContent {
-  border-radius: var(--mantine-radius-xl) var(--mantine-radius-xl) 0 0;
+  height: auto !important;
+  max-height: 90vh;
+  max-height: 90dvh;
+  border-radius: 16px 16px 0 0;
 }
 
 .drawerTitle {
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 18px;
+  font-weight: 600;
   color: var(--mantine-color-gray-9);
+}
+
+.drawerBody {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-bottom: 16px;
+  flex: 1;
+  min-height: 0;
+}
+
+.addressItem {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--mantine-color-gray-2);
+}
+
+.addressRadio {
+  border-color: var(--mantine-color-gray-4);
+}
+
+.addressRadio:checked {
+  background-color: var(--mantine-color-red-6);
+  border-color: var(--mantine-color-red-6);
+}
+
+.addressIcon {
+  color: var(--mantine-color-red-6);
+}
+
+.addressLabel {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  color: var(--mantine-color-gray-9);
+}
+.addAddressButton {
+  margin-top: 24px;
+  flex-shrink: 0;
 }

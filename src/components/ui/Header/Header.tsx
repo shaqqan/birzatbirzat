@@ -1,37 +1,20 @@
-import { useState, useEffect, useRef } from "react";
-import { ActionIcon, Button, Drawer } from "@mantine/core";
+import { useState } from "react";
+import { ActionIcon, Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown, IconMapPin, IconMenu2 } from "@tabler/icons-react";
+import { useScrollHide } from "@/hooks";
+import { AddressDrawer } from "./AddressDrawer";
 import classes from "./Header.module.css";
 
+const mockAddresses = [
+  { id: "1", address: "улица Шахрисабз, 23" },
+  { id: "2", address: "улица Шахрисабз, 23" },
+];
+
 export function Header() {
-  const [isHidden, setIsHidden] = useState(false);
+  const isHidden = useScrollHide();
   const [opened, { open, close }] = useDisclosure(false);
-  const lastScrollY = useRef(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const scrollThreshold = 10;
-
-      if (currentScrollY < 50) {
-        setIsHidden(false);
-        lastScrollY.current = currentScrollY;
-        return;
-      }
-
-      if (currentScrollY > lastScrollY.current + scrollThreshold) {
-        setIsHidden(true);
-      } else if (currentScrollY < lastScrollY.current - scrollThreshold) {
-        setIsHidden(false);
-      }
-
-      lastScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [selectedAddress, setSelectedAddress] = useState("2");
 
   return (
     <>
@@ -60,16 +43,13 @@ export function Header() {
         </div>
       </header>
 
-      <Drawer
+      <AddressDrawer
         opened={opened}
         onClose={close}
-        position="bottom"
-        title="Мои адреса"
-        size="xs"
-        classNames={{ content: classes.drawerContent, title: classes.drawerTitle }}
-      >
-        {/* Drawer content */}
-      </Drawer>
+        addresses={mockAddresses}
+        selectedAddress={selectedAddress}
+        onSelectAddress={setSelectedAddress}
+      />
     </>
   );
 }
