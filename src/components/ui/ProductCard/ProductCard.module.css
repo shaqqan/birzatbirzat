@@ -118,7 +118,7 @@
 .counter {
   width: 100%;
   height: var(--size-sm);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-lg);
   background-color: #FFFFFF;
   padding: var(--space-xxs);
   align-items: center;
