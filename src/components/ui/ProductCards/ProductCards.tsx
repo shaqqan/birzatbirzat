@@ -32,7 +32,6 @@ export function ProductCards({
   items,
   variant = "vertical",
 }: ProductCardsProps) {
-
   return (
     <div className={classes.container}>
       {title && (
@@ -56,7 +55,13 @@ export function ProductCards({
 
       {variant === "horizontal" ? (
         <Carousel
-          slideSize={{ base: "50%", sm: "33.33%", md: "25%", lg: "25%", xl: "20%" }}
+          slideSize={{
+            base: "50%",
+            sm: "33.33%",
+            md: "25%",
+            lg: "25%",
+            xl: "20%",
+          }}
           slideGap="sm"
           classNames={{
             control: classes.carouselControl,
@@ -64,15 +69,19 @@ export function ProductCards({
         >
           {items.map((item, index) => (
             <Carousel.Slide key={index}>
-              <ProductCard {...item}/>
+              <ProductCard {...item} />
             </Carousel.Slide>
           ))}
         </Carousel>
       ) : (
         <Grid gutter={10}>
           {items.map((item, index) => (
-            <Grid.Col span={{base : 12, md: 4, lg: 4, xl: 3}} key={index} className={classes.gridItem}>
-              <ProductCard {...item}  fullWidth/>
+            <Grid.Col
+              span={{ base: 6, md: 4, lg: 4, xl: 3 }}
+              key={index}
+              className={classes.gridItem}
+            >
+              <ProductCard {...item} fullWidth />
             </Grid.Col>
           ))}
         </Grid>
