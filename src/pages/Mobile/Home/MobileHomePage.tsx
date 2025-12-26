@@ -8,6 +8,7 @@ import {
   frequentlyBoughtProducts,
 } from "@/mocks/products";
 import { useCallback, useState } from "react";
+import { MobileBannerCorusel } from "@/components/ui/MobileBanner/MobileBanner";
 
 export function MobileHomePage() {
   const [quantities, setQuantities] = useState<Record<number, number>>({});
@@ -25,6 +26,7 @@ export function MobileHomePage() {
   return (
     <>
       <Header />
+      <MobileBannerCorusel />
       <Container>
         <ProductCards
           title="Новогодняя скидка"
