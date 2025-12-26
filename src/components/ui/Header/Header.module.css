@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 0px;
+  padding: 0 16px 0 0;
 }
 
 .locationButton {
@@ -38,6 +38,16 @@
 
 .menuButton {
   color: var(--mantine-color-gray-9);
+}
+
+.avatar {
+  border: 2px solid var(--mantine-color-gray-3);
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.avatar:hover {
+  border-color: var(--mantine-color-red-5);
 }
 
 .drawerInner {

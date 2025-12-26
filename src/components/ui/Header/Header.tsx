@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ActionIcon, Button } from "@mantine/core";
+import { Avatar, Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconChevronDown, IconMapPin, IconMenu2 } from "@tabler/icons-react";
+import { IconChevronDown, IconMapPin } from "@tabler/icons-react";
 import { useScrollHide } from "@/hooks";
 import { AddressDrawer } from "./AddressDrawer";
 import classes from "./Header.module.css";
@@ -33,13 +33,13 @@ export function Header() {
           >
             г. Ташкент, ул. Пушкина, 123
           </Button>
-          <ActionIcon
-            variant="transparent"
-            size="xl"
-            className={classes.menuButton}
-          >
-            <IconMenu2 size={24} />
-          </ActionIcon>
+          <Avatar
+            src="/avatar/begis.jpg"
+            alt="User avatar"
+            size={38}
+            radius="xl"
+            className={classes.avatar}
+          />
         </div>
       </header>
 
