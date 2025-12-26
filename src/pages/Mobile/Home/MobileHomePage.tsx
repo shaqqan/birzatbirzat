@@ -4,12 +4,11 @@ import { ProductCards } from "@/features/products";
 import { Container } from "@/components/shared";
 import {
   addQuantityHandlers,
-  discountProducts,
-  frequentlyBoughtProducts,
+  specialProducts,
 } from "@/mocks/products";
 import { useCallback, useState } from "react";
 import { MobileBannerCorusel } from "@/components/ui/MobileBanner/MobileBanner";
-import { Flex, TextInput } from "@mantine/core";
+import { Box, Flex, TextInput } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
 import { Categories } from "@/features/home/components/Categories/Categories";
 
@@ -38,26 +37,26 @@ export function MobileHomePage() {
       </Container>
       <MobileBannerCorusel />
       <Categories />
-      <Container>
+      <Box style={{ paddingLeft: "16px", gap: "16px" }}>
         <ProductCards
-          title="Новогодняя скидка"
-          variant="vertical"
-          items={addQuantityHandlers(
-            discountProducts,
-            quantities,
-            handleQuantityChange
-          )}
-        />
-        <ProductCards
-          title="Часто покупают"
+          title="Спецпредложения"
           variant="horizontal"
           items={addQuantityHandlers(
-            frequentlyBoughtProducts,
+            specialProducts,
             quantities,
             handleQuantityChange
           )}
         />
-      </Container>
+        <ProductCards
+          title="Новинки"
+          variant="horizontal"
+          items={addQuantityHandlers(
+            specialProducts,
+            quantities,
+            handleQuantityChange
+          )}
+        />
+      </Box>
       <BottomNavbar />
     </Flex>
   );

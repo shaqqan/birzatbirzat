@@ -40,7 +40,7 @@ export function ProductCards({
       {variant === "horizontal" ? (
         <Carousel
           slideSize={{
-            base: "50%",
+            base: "46%",
             sm: "33.33%",
             xl: "25%",
           }}
