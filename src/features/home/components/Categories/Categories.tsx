@@ -20,6 +20,38 @@ const categories = [
     title: "Мясные продукты",
     image: "/categories/4.png",
   },
+  {
+    title: "Скидки и акции",
+    image: "/categories/1.png",
+  },
+  {
+    title: "Молочные продукты",
+    image: "/categories/2.png",
+  },
+  {
+    title: "Овощи и фрукты",
+    image: "/categories/3.png",
+  },
+  {
+    title: "Мясные продукты",
+    image: "/categories/4.png",
+  },
+  {
+    title: "Скидки и акции",
+    image: "/categories/1.png",
+  },
+  {
+    title: "Молочные продукты",
+    image: "/categories/2.png",
+  },
+  {
+    title: "Овощи и фрукты",
+    image: "/categories/3.png",
+  },
+  {
+    title: "Мясные продукты",
+    image: "/categories/4.png",
+  },
 ];
 
 export function Categories() {

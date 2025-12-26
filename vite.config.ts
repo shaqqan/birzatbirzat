@@ -16,6 +16,7 @@ export default defineConfig({
         name: "Rediska.uz",
         short_name: "Rediska",
         description: "Rediska",
+        theme_color: "#FFFFFF",
         background_color: "#FFFFFF",
         display: "standalone",
         orientation: "portrait",
