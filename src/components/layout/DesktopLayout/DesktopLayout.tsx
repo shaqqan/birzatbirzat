@@ -16,7 +16,7 @@ export function DesktopLayout() {
       <Grid
         className={`${classes.layoutContent} container`}
         mb={{ base: 20, md: 30, lg: 40 }}
-        gutter="md"
+        gutter="lg"
       >
         <Grid.Col span={8 / 3}>
           {!isCheckoutPage && (

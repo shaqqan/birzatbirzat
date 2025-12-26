@@ -25,6 +25,8 @@ body {
   position: sticky;
   top: calc(var(--header-height) + 20px);
   flex-shrink: 0;
+  padding: 10px;
+  border: 1px solid var(--mantine-color-gray-1);
 }
 
 .main {
