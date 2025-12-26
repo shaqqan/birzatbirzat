@@ -33,7 +33,8 @@
     "postcss-preset-mantine": "1.18.0",
     "postcss-simple-vars": "^7.0.1",
     "typescript": "^5.9.2",
-    "vite": "^7.1.5"
+    "vite": "^7.1.5",
+    "vite-plugin-pwa": "^1.2.0"
   },
   "packageManager": "yarn@4.12.0"
 }
