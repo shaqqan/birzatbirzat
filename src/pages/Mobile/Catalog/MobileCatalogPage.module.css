@@ -7,6 +7,7 @@
 .header {
   padding: 16px;
   padding-top: 8px;
+  box-shadow: var(--shadow-xs);
 }
 
 .title {
@@ -17,7 +18,7 @@
 }
 
 .search {
-  margin-bottom: 16px;
+  padding: 16px 0px 16px 0px;
 }
 
 .content {

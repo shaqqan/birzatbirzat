@@ -11,6 +11,7 @@ import { useDevice } from "@/hooks/useDevice";
 import { MobileHomePage } from "@/pages/Mobile/Home/MobileHomePage";
 import { MobileProductDetailPage } from "@/pages/Mobile/ProductDetail";
 import { MobileCatalogPage } from "@/pages/Mobile/Catalog";
+import { MobileBasketPage } from "@/pages/Mobile/Basket";
 import { MobileNotFoundPage } from "@/pages/Mobile/NotFound/MobileNotFoundPage";
 
 // Placeholder component for now
@@ -69,6 +70,10 @@ const mobileRoutes = [
   {
     path: "catalog",
     element: <MobileCatalogPage />,
+  },
+  {
+    path: "basket",
+    element: <MobileBasketPage />,
   },
   {
     path: "*",

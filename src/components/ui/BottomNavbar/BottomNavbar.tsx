@@ -22,7 +22,7 @@ const navlinks = [
   {
     label: "Корзина",
     icon: IconShoppingCart,
-    path: "/cart",
+    path: "/basket",
   },
   {
     label: "Избранное",

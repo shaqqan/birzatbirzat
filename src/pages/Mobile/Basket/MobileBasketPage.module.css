@@ -1,0 +1,236 @@
+.page {
+  min-height: 100vh;
+  padding-bottom: 160px;
+  background-color: var(--mantine-color-white);
+}
+
+.header {
+  padding: 16px;
+  padding-top: 8px;
+  box-shadow: var(--shadow-xs);
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--mantine-color-dark-9);
+  line-height: 1.2;
+}
+
+.content {
+  flex: 1;
+  padding-top: 12px;
+}
+
+.itemCountWrapper {
+  padding: 16px 16px 8px 16px;
+}
+
+.itemCount {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+  line-height: 28px;
+}
+
+.itemsList {
+  margin-bottom: 16px;
+}
+
+.swipeableContainer {
+  position: relative;
+  overflow: hidden;
+}
+
+.deleteAction {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  border-radius: 8px;
+  background-color: var(--mantine-color-red-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.swipeableContent {
+  position: relative;
+  background-color: var(--mantine-color-white);
+  transition: transform 0.2s ease-out;
+  touch-action: pan-y;
+}
+
+.basketItem {
+  position: relative;
+  padding: 12px 0;
+  gap: 12px;
+}
+
+.itemImage {
+  flex-shrink: 0;
+  border-radius: 12px;
+  background-color: var(--mantine-color-gray-0);
+}
+
+.itemInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.itemName {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--mantine-color-dark-9);
+  line-height: 18px;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.itemPrice {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--mantine-color-red-5);
+}
+
+.itemOldPrice {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--mantine-color-gray-6);
+  text-decoration: line-through;
+}
+
+.itemWeight {
+  font-size: 12px;
+  color: var(--mantine-color-gray-6);
+  margin-top: 2px;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--mantine-color-gray-1);
+  border-radius: 8px;
+  padding: 4px 8px;
+  width: fit-content;
+  margin-top: 8px;
+}
+
+.quantity {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+  min-width: 24px;
+  text-align: center;
+}
+
+.deleteButton {
+  position: absolute;
+  right: 0;
+  bottom: 12px;
+  border-radius: 8px;
+}
+
+.divider {
+  margin: 0;
+  margin-left: 124px;
+}
+
+.promoSection {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.promoCard {
+  background-color: var(--mantine-color-gray-0);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.promoIcon {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--mantine-color-dark-9);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--mantine-color-white);
+  border-radius: 8px;
+}
+
+.promoTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+}
+
+.promoSubtitle {
+  font-size: 12px;
+  color: var(--mantine-color-gray-6);
+}
+
+.summary {
+  background-color: var(--mantine-color-gray-0);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.summaryRow {
+  margin-bottom: 8px;
+}
+
+.summaryLabel {
+  font-size: 14px;
+  color: var(--mantine-color-gray-7);
+}
+
+.summaryValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mantine-color-dark-9);
+}
+
+.totalRow {
+  margin-top: 8px;
+}
+
+.totalLabel {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+}
+
+.totalValue {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--mantine-color-dark-9);
+}
+
+.footer {
+  position: fixed;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  padding: 16px;
+}
+
+.checkoutButton {
+  background-color: var(--mantine-color-red-6);
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  height: 52px;
+}
+
+.checkoutButton:hover {
+  background-color: var(--mantine-color-red-7);
+}
