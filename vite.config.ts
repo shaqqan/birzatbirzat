@@ -15,7 +15,7 @@ export default defineConfig({
       manifest: {
         name: "Rediska.uz",
         short_name: "Rediska",
-        description: "Rediska.uz",
+        description: "Rediska",
         theme_color: "#DA4957",
         background_color: "#FFFFFF",
         display: "standalone",
@@ -24,17 +24,12 @@ export default defineConfig({
         start_url: "/",
         icons: [
           {
-            src: "pwa-192x192.png",
-            sizes: "192x192",
-            type: "image/png",
-          },
-          {
-            src: "pwa-512x512.png",
+            src: "logo/app.png",
             sizes: "512x512",
             type: "image/png",
           },
           {
-            src: "pwa-512x512.png",
+            src: "logo/app.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any maskable",
