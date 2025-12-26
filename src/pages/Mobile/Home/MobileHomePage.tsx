@@ -2,10 +2,7 @@ import { BottomNavbar } from "@/components/ui";
 import { Header } from "@/components/ui/Header/Header";
 import { ProductCards } from "@/features/products";
 import { Container } from "@/components/shared";
-import {
-  addQuantityHandlers,
-  specialProducts,
-} from "@/mocks/products";
+import { addQuantityHandlers, specialProducts } from "@/mocks/products";
 import { useCallback, useState } from "react";
 import { MobileBannerCorusel } from "@/components/ui/MobileBanner/MobileBanner";
 import { Box, Flex, TextInput } from "@mantine/core";
@@ -47,16 +44,18 @@ export function MobileHomePage() {
             handleQuantityChange
           )}
         />
+      </Box>
+      <Container>
         <ProductCards
           title="Новинки"
-          variant="horizontal"
+          variant="vertical"
           items={addQuantityHandlers(
             specialProducts,
             quantities,
             handleQuantityChange
           )}
         />
-      </Box>
+      </Container>
       <BottomNavbar />
     </Flex>
   );
