@@ -75,8 +75,8 @@ export function Categories() {
       </Group>
 
       <Carousel slideGap="12px" withControls={false} slideSize={"118px"}>
-        {categories.map((category) => (
-          <Carousel.Slide key={category.title}>
+        {categories.map((category, index) => (
+          <Carousel.Slide key={index}>
             <Card className={classes.categoryCard} w="100%">
               <Text className={classes.categoryTitle}>{category.title}</Text>
               <Image
