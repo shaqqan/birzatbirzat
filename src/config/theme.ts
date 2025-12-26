@@ -1,4 +1,9 @@
-import { createTheme, MantineColorsTuple, rem } from "@mantine/core";
+import {
+  createTheme,
+  MantineColorsTuple,
+  MantineTheme,
+  rem,
+} from "@mantine/core";
 
 // ============================================
 // DESIGN SYSTEM - Rediska.uz
@@ -233,10 +238,73 @@ export const theme = createTheme({
       defaultProps: {
         radius: "md",
       },
+      styles: (theme: MantineTheme, props: { variant?: string }) => {
+        if (props.variant === "mobile") {
+          return {
+            wrapper: {
+              "--input-height": rem(52),
+              "--input-fz": rem(fontSizes.lg),
+              "--input-padding-x": rem(spacing.md),
+              "--input-gap": rem(spacing.xs),
+            },
+            input: {
+              height: rem(48),
+              backgroundColor: theme.colors.gray[1],
+              border: "none",
+              color: theme.colors.gray[9],
+              fontSize: rem(fontSizes.lg),
+              fontWeight: 400,
+              lineHeight: 24,
+              borderRadius: rem(radius.md),
+              "&::placeholder": {
+                color: theme.colors.gray[5],
+                fontSize: rem(fontSizes.lg),
+                fontWeight: 400,
+                lineHeight: 24,
+              },
+              "&:focus": {
+                backgroundColor: theme.white,
+                border: `1px solid ${theme.colors.primary[4]}`,
+              },
+            },
+          };
+        }
+        return {};
+      },
     },
     TextInput: {
       defaultProps: {
         radius: "md",
+      },
+      styles: (theme: MantineTheme, props: { variant?: string }) => {
+        if (props.variant === "mobile") {
+          return {
+            wrapper: {
+              "--input-height": rem(48),
+              "--input-fz": rem(fontSizes.lg),
+              "--input-padding-x": rem(spacing.md),
+            },
+            input: {
+              backgroundColor: theme.colors.gray[1],
+              border: "none",
+              borderRadius: rem(radius.md),
+              "&::placeholder": {
+                color: theme.colors.gray[5],
+              },
+              "&:focus": {
+                backgroundColor: theme.white,
+                border: `1px solid ${theme.colors.primary[4]}`,
+              },
+            },
+            label: {
+              fontSize: rem(fontSizes.md),
+              fontWeight: 500,
+              marginBottom: rem(spacing.xs),
+              color: theme.colors.gray[9],
+            },
+          };
+        }
+        return {};
       },
     },
     Select: {

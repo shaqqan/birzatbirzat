@@ -9,6 +9,8 @@ import {
 } from "@/mocks/products";
 import { useCallback, useState } from "react";
 import { MobileBannerCorusel } from "@/components/ui/MobileBanner/MobileBanner";
+import { Flex, Grid, TextInput } from "@mantine/core";
+import { IconSearch } from "@tabler/icons-react";
 
 export function MobileHomePage() {
   const [quantities, setQuantities] = useState<Record<number, number>>({});
@@ -24,8 +26,15 @@ export function MobileHomePage() {
   );
 
   return (
-    <>
+    <Flex direction="column" gap="md">
       <Header />
+      <Container>
+        <TextInput
+          variant="mobile"
+          placeholder="Поиск продуктов..."
+          leftSection={<IconSearch size={20} />}
+        />
+      </Container>
       <MobileBannerCorusel />
       <Container>
         <ProductCards
@@ -48,6 +57,6 @@ export function MobileHomePage() {
         />
       </Container>
       <BottomNavbar />
-    </>
+    </Flex>
   );
 }
