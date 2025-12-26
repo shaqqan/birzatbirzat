@@ -11,6 +11,7 @@ import { useCallback, useState } from "react";
 import { MobileBannerCorusel } from "@/components/ui/MobileBanner/MobileBanner";
 import { Flex, TextInput } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
+import { Categories } from "@/features/home/components/Categories/Categories";
 
 export function MobileHomePage() {
   const [quantities, setQuantities] = useState<Record<number, number>>({});
@@ -36,6 +37,7 @@ export function MobileHomePage() {
         />
       </Container>
       <MobileBannerCorusel />
+      <Categories />
       <Container>
         <ProductCards
           title="Новогодняя скидка"
