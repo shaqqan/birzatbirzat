@@ -9,7 +9,7 @@ import {
 } from "@/mocks/products";
 import { useCallback, useState } from "react";
 import { MobileBannerCorusel } from "@/components/ui/MobileBanner/MobileBanner";
-import { Flex, Grid, TextInput } from "@mantine/core";
+import { Flex, TextInput } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
 
 export function MobileHomePage() {
