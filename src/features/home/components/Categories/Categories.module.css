@@ -55,6 +55,10 @@
 }
 
 .categoryTitle {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 1;
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
