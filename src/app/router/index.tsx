@@ -9,6 +9,7 @@ import { CatalogPage } from "@/pages/Desktop/Catalog";
 import { CheckoutPage } from "@/pages/Desktop/Checkout";
 import { useDevice } from "@/hooks/useDevice";
 import { MobileHomePage } from "@/pages/Mobile/Home/MobileHomePage";
+import { MobileProductDetailPage } from "@/pages/Mobile/ProductDetail";
 import { MobileNotFoundPage } from "@/pages/Mobile/NotFound/MobileNotFoundPage";
 
 // Placeholder component for now
@@ -59,6 +60,10 @@ const mobileRoutes = [
   {
     path: "/",
     element: <MobileHomePage />,
+  },
+  {
+    path: "product/:id",
+    element: <MobileProductDetailPage />,
   },
   {
     path: "*",

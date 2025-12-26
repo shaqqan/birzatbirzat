@@ -1,0 +1,1 @@
+export { MobileProductDetailPage } from "./MobileProductDetailPage";

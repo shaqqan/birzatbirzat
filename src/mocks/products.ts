@@ -18,6 +18,7 @@ export const specialProducts: MockProduct[] = [
     title: "Ржаной хлеб «Wasa Fiber»",
     price: 16000,
     discountPrice: 14490,
+    isHit: true,
     weight: "250 г",
   },
   {
@@ -34,6 +35,7 @@ export const specialProducts: MockProduct[] = [
     title: "Ржаной хлеб «Wasa Fiber»",
     price: 16000,
     discountPrice: 14490,
+    isHit: true,
     weight: "250 г",
   },
   {
@@ -42,6 +44,7 @@ export const specialProducts: MockProduct[] = [
     title: "Кофе молотый Mehmet Efendi",
     price: 126990,
     discountPrice: 103890,
+    isHit: true,
     weight: "250 г",
   },
   {
@@ -58,6 +61,7 @@ export const specialProducts: MockProduct[] = [
     title: "Кофе молотый Mehmet Efendi",
     price: 126990,
     discountPrice: 103890,
+    isHit: true,
     weight: "250 г",
   },
 ];
