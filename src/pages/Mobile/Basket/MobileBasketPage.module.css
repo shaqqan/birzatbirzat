@@ -221,6 +221,7 @@
   left: 0;
   right: 0;
   padding: 16px;
+  background-color: var(--mantine-color-white);
 }
 
 .checkoutButton {
