@@ -79,7 +79,10 @@ export function MobileCheckoutPage() {
   const totalPrice = 24980;
 
   const handlePay = () => {
-    console.log("Processing payment...");
+    // Simulate payment processing
+    // In real app, this would call payment API
+    const isSuccess = Math.random() > 0.3; // 70% success rate for demo
+    navigate(`/payment-result?status=${isSuccess ? "success" : "error"}`);
   };
 
   return (
@@ -190,7 +193,7 @@ export function MobileCheckoutPage() {
                   onAccept={setRecipientPhone}
                   placeholder="+998 (00) 000-00-00"
                   className={classes.fieldInput}
-                  inputMode="tel"
+                  inputMode="numeric"
                 />
               </Box>
             </Box>
@@ -235,10 +238,7 @@ export function MobileCheckoutPage() {
                           {label}
                         </Text>
                       </Flex>
-                      <Radio
-                        value={id}
-                        classNames={{ radio: classes.radio }}
-                      />
+                      <Radio value={id} classNames={{ radio: classes.radio }} />
                     </Flex>
                   );
                 })}

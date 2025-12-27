@@ -36,3 +36,6 @@ export { Footer } from "./Footer";
 
 // Modals (still in ui/)
 export { AddressModal } from "./AddressModal/AddressModal";
+
+// Splash Screen
+export { SplashScreen } from "./SplashScreen";

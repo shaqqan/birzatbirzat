@@ -1,0 +1,1 @@
+export { MobilePaymentResultPage } from "./MobilePaymentResultPage";

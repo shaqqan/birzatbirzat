@@ -17,6 +17,7 @@ import { MobileProfilePage } from "@/pages/Mobile/Profile";
 import { MobileOrdersPage } from "@/pages/Mobile/Orders";
 import { MobileAddressesPage, MobileAddAddressPage } from "@/pages/Mobile/Addresses";
 import { MobileCheckoutPage } from "@/pages/Mobile/Checkout";
+import { MobilePaymentResultPage } from "@/pages/Mobile/PaymentResult";
 import { MobileNotFoundPage } from "@/pages/Mobile/NotFound/MobileNotFoundPage";
 
 // Placeholder component for now
@@ -103,6 +104,10 @@ const mobileRoutes = [
   {
     path: "checkout",
     element: <MobileCheckoutPage />,
+  },
+  {
+    path: "payment-result",
+    element: <MobilePaymentResultPage />,
   },
   {
     path: "*",
