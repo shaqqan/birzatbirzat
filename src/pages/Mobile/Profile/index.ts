@@ -1,0 +1,1 @@
+export { MobileProfilePage } from "./MobileProfilePage";

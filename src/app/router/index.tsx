@@ -13,6 +13,7 @@ import { MobileProductDetailPage } from "@/pages/Mobile/ProductDetail";
 import { MobileCatalogPage } from "@/pages/Mobile/Catalog";
 import { MobileBasketPage } from "@/pages/Mobile/Basket";
 import { MobileFavoritesPage } from "@/pages/Mobile/Favorites";
+import { MobileProfilePage } from "@/pages/Mobile/Profile";
 import { MobileNotFoundPage } from "@/pages/Mobile/NotFound/MobileNotFoundPage";
 
 // Placeholder component for now
@@ -79,6 +80,10 @@ const mobileRoutes = [
   {
     path: "favorites",
     element: <MobileFavoritesPage />,
+  },
+  {
+    path: "profile",
+    element: <MobileProfilePage />,
   },
   {
     path: "*",
