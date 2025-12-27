@@ -18,6 +18,7 @@ import {
   IconTrash,
 } from "@tabler/icons-react";
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import classes from "./MobileBasketPage.module.css";
 
 interface SwipeableItemProps {
@@ -108,6 +109,7 @@ function formatPrice(price: number): string {
 }
 
 export function MobileBasketPage() {
+  const navigate = useNavigate();
   const [basketItems, setBasketItems] =
     useState<BasketItem[]>(initialBasketItems);
 
@@ -256,7 +258,12 @@ export function MobileBasketPage() {
       </Container>
 
       <Box className={classes.footer}>
-        <Button fullWidth size="lg" className={classes.checkoutButton}>
+        <Button
+          fullWidth
+          size="lg"
+          className={classes.checkoutButton}
+          onClick={() => navigate("/checkout")}
+        >
           Оформить заказ
         </Button>
       </Box>

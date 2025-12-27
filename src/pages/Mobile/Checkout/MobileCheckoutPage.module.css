@@ -1,0 +1,215 @@
+.page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--mantine-color-white);
+  padding-bottom: 100px;
+}
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 12px 16px;
+  background-color: var(--mantine-color-white);
+  border-bottom: 1px solid var(--mantine-color-gray-2);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+}
+
+/* Content */
+.content {
+  padding: 16px 0;
+}
+
+/* Section */
+.section {
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--mantine-color-dark-9);
+  margin-bottom: 12px;
+}
+
+/* Card */
+.card {
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Field Labels and Values */
+.fieldLabel {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--mantine-color-gray-6);
+  line-height: 1;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.fieldValue {
+  font-size: 15px;
+  color: var(--mantine-color-gray-9);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.fieldInput {
+  font-size: 15px;
+  color: var(--mantine-color-gray-9);
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
+  min-height: 20px;
+  height: 20px;
+  line-height: 1.2;
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+}
+
+.fieldInput::placeholder {
+  color: var(--mantine-color-gray-5);
+  font-weight: 400;
+}
+
+.commentInput {
+  font-size: 15px;
+  color: var(--mantine-color-gray-9);
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+  min-height: 20px;
+  width: 100%;
+  resize: none;
+  line-height: 1.4;
+}
+
+.commentInput::placeholder {
+  color: var(--mantine-color-gray-5);
+}
+
+/* Address Row */
+.addressRow {
+  height: 56px;
+  padding: 0 16px;
+  cursor: pointer;
+  background-color: var(--mantine-color-gray-1);
+  border-radius: 12px;
+}
+
+.addressRow:active {
+  background-color: var(--mantine-color-gray-0);
+}
+
+/* Input styles */
+.input {
+  height: 56px;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--mantine-color-gray-1);
+  border-radius: 12px;
+}
+
+.inputSmall {
+  flex: 1;
+  height: 56px;
+  padding: 0 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--mantine-color-gray-1);
+  border-radius: 12px;
+}
+
+/* Time Row */
+.timeRow {
+  height: 56px;
+  padding: 0 16px;
+  cursor: pointer;
+  background-color: var(--mantine-color-gray-1);
+  border-radius: 12px;
+}
+
+.timeRow:active {
+  background-color: var(--mantine-color-gray-0);
+}
+
+/* Payment Row */
+.paymentRow {
+  height: 56px;
+  padding: 0 16px;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 1px solid var(--mantine-color-gray-2);
+}
+
+.paymentRow:active {
+  background-color: var(--mantine-color-gray-0);
+}
+
+.paymentIcon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paymentLabel {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.radio {
+  cursor: pointer;
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 16px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  background-color: var(--mantine-color-white);
+  border-top: 1px solid var(--mantine-color-gray-2);
+  z-index: 100;
+}
+
+.payButton {
+  background-color: var(--mantine-color-primary-5);
+  font-weight: 500;
+  font-size: 16px;
+  height: 56px;
+  border-radius: 12px;
+}
+
+.payButton :global(.mantine-Button-inner) {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.payButton :global(.mantine-Button-section) {
+  margin: 0;
+}
+
+.payButton:hover {
+  background-color: var(--mantine-color-primary-6);
+}
