@@ -14,6 +14,7 @@ import { MobileCatalogPage } from "@/pages/Mobile/Catalog";
 import { MobileBasketPage } from "@/pages/Mobile/Basket";
 import { MobileFavoritesPage } from "@/pages/Mobile/Favorites";
 import { MobileProfilePage } from "@/pages/Mobile/Profile";
+import { MobileOrdersPage } from "@/pages/Mobile/Orders";
 import { MobileNotFoundPage } from "@/pages/Mobile/NotFound/MobileNotFoundPage";
 
 // Placeholder component for now
@@ -84,6 +85,10 @@ const mobileRoutes = [
   {
     path: "profile",
     element: <MobileProfilePage />,
+  },
+  {
+    path: "orders",
+    element: <MobileOrdersPage />,
   },
   {
     path: "*",
