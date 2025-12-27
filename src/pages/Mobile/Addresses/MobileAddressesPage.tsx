@@ -101,9 +101,8 @@ export function MobileAddressesPage() {
     setEditingAddress(null);
   };
 
-  const handleOpenAddModal = () => {
-    resetForm();
-    openModal();
+  const handleAddAddress = () => {
+    navigate("/addresses/add");
   };
 
   const handleOpenEditModal = (address: Address) => {
@@ -206,7 +205,7 @@ export function MobileAddressesPage() {
                 size="md"
                 leftSection={<IconPlus size={18} />}
                 className={classes.addButton}
-                onClick={handleOpenAddModal}
+                onClick={handleAddAddress}
               >
                 Добавить адрес
               </Button>
@@ -288,7 +287,7 @@ export function MobileAddressesPage() {
               radius="md"
               leftSection={<IconPlus size={18} />}
               className={classes.addNewButton}
-              onClick={handleOpenAddModal}
+              onClick={handleAddAddress}
             >
               Добавить новый адрес
             </Button>
