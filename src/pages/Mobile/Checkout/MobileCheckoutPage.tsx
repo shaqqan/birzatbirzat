@@ -110,13 +110,16 @@ export function MobileCheckoutPage() {
                 justify="space-between"
                 onClick={() => navigate("/addresses/add")}
               >
-                <Box>
+                <Box style={{ flex: 1, minWidth: 0 }}>
                   <Text className={classes.fieldLabel}>Адрес доставки</Text>
-                  <Text className={classes.fieldValue}>{address}</Text>
+                  <Text className={classes.fieldValue} lineClamp={1}>
+                    {address}
+                  </Text>
                 </Box>
                 <IconChevronDown
                   size={20}
                   color="var(--mantine-color-gray-5)"
+                  style={{ flexShrink: 0 }}
                 />
               </Flex>
 
@@ -187,6 +190,7 @@ export function MobileCheckoutPage() {
                   onAccept={setRecipientPhone}
                   placeholder="+998 (00) 000-00-00"
                   className={classes.fieldInput}
+                  inputMode="tel"
                 />
               </Box>
             </Box>
