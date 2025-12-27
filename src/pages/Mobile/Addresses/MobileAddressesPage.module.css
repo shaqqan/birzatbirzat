@@ -1,0 +1,241 @@
+.page {
+  min-height: 100vh;
+  padding-bottom: 100px;
+  background-color: var(--mantine-color-gray-0);
+}
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 12px 16px;
+  background-color: var(--mantine-color-white);
+  border-bottom: 1px solid var(--mantine-color-gray-2);
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+}
+
+/* Content */
+.content {
+  padding: 16px 0;
+}
+
+/* Address List */
+.addressList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Address Card */
+.addressCard {
+  background-color: var(--mantine-color-white);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.cardContent {
+  display: flex;
+  gap: 14px;
+}
+
+.addressIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.addressInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.addressLabel {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+}
+
+.defaultBadge {
+  background-color: var(--mantine-color-primary-0);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.defaultText {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--mantine-color-primary-7);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.addressText {
+  font-size: 14px;
+  color: var(--mantine-color-dark-7);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.addressDetails {
+  font-size: 13px;
+  color: var(--mantine-color-gray-6);
+  margin-top: 2px;
+}
+
+/* Card Actions */
+.cardActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--mantine-color-gray-1);
+}
+
+.actionBtn {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Add New Button */
+.addNewButton {
+  margin-top: 16px;
+  font-weight: 500;
+}
+
+/* Empty State */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.emptyIconWrapper {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--mantine-color-gray-1), var(--mantine-color-gray-0));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.emptyIcon {
+  color: var(--mantine-color-gray-5);
+}
+
+.emptyTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+  margin-bottom: 8px;
+}
+
+.emptyDescription {
+  font-size: 14px;
+  color: var(--mantine-color-gray-6);
+  margin-bottom: 24px;
+  max-width: 250px;
+  line-height: 1.5;
+}
+
+.addButton {
+  font-weight: 500;
+}
+
+/* Modal */
+.modalHeader {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--mantine-color-gray-2);
+}
+
+.modalTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+}
+
+.modalBody {
+  padding: 20px;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fieldLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mantine-color-dark-7);
+  margin-bottom: 6px;
+}
+
+.input {
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+/* Type Selector */
+.typeSelector {
+  margin-bottom: 4px;
+}
+
+.typeOption {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 8px;
+  border-radius: 12px;
+  background-color: var(--mantine-color-gray-0);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--mantine-color-gray-6);
+}
+
+.typeOption:active {
+  transform: scale(0.98);
+}
+
+.typeOption[data-selected] {
+  background-color: var(--mantine-color-primary-0);
+  border-color: var(--mantine-color-primary-5);
+  color: var(--mantine-color-primary-7);
+}
+
+.typeLabel {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.saveButton {
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+/* Delete Modal */
+.deleteMessage {
+  font-size: 14px;
+  color: var(--mantine-color-gray-7);
+  line-height: 1.5;
+}

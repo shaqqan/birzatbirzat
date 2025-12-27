@@ -154,3 +154,56 @@
   margin-top: 24px;
   margin-bottom: 16px;
 }
+
+/* Language Modal */
+.modalHeader {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--mantine-color-gray-2);
+}
+
+.modalTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--mantine-color-dark-9);
+}
+
+.modalBody {
+  padding: 8px 0;
+}
+
+.languageList {
+  display: flex;
+  flex-direction: column;
+}
+
+.languageItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.languageItem:active {
+  background-color: var(--mantine-color-gray-0);
+}
+
+.languageItem[data-selected] {
+  background-color: var(--mantine-color-primary-0);
+}
+
+.languageItem[data-selected] .languageName {
+  color: var(--mantine-color-primary-7);
+  font-weight: 600;
+}
+
+.languageName {
+  font-size: 16px;
+  color: var(--mantine-color-dark-8);
+  font-weight: 500;
+}
+
+.checkIcon {
+  color: var(--mantine-color-primary-6);
+}

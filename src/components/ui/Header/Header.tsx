@@ -31,7 +31,7 @@ export function Header() {
             rightSection={<IconChevronDown size={20} />}
             onClick={open}
           >
-            г. Ташкент, ул. Пушкина, 123
+            ул. Пушкина, 123, г. Ташкент
           </Button>
           <Avatar
             src="/avatar/begis.jpg"

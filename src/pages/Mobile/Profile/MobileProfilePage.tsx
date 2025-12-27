@@ -1,7 +1,9 @@
 import { BottomNavbar } from "@/components/ui";
 import { Container } from "@/components/shared";
-import { Avatar, Box, Flex, Text } from "@mantine/core";
+import { Avatar, Box, Flex, Modal, Text } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import {
+  IconCheck,
   IconChevronRight,
   IconHeart,
   IconLanguage,
@@ -10,6 +12,7 @@ import {
   IconShoppingBag,
   IconUser,
 } from "@tabler/icons-react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "./MobileProfilePage.module.css";
 
@@ -23,8 +26,24 @@ interface MenuItem {
   iconColor?: string;
 }
 
+interface Language {
+  code: string;
+  name: string;
+  nativeName: string;
+}
+
+const languages: Language[] = [
+  { code: "ru", name: "Русский", nativeName: "Русский" },
+  { code: "uz", name: "O'zbekcha", nativeName: "O'zbekcha" },
+  { code: "en", name: "English", nativeName: "English" },
+];
+
 export function MobileProfilePage() {
   const navigate = useNavigate();
+  const [languageModalOpened, { open: openLanguageModal, close: closeLanguageModal }] = useDisclosure(false);
+  const [selectedLanguage, setSelectedLanguage] = useState<string>("ru");
+
+  const currentLanguage = languages.find(l => l.code === selectedLanguage);
 
   const user = {
     name: "Орынбаев Бегис",
@@ -60,8 +79,8 @@ export function MobileProfilePage() {
     {
       icon: <IconLanguage size={20} />,
       label: "Язык",
-      subtitle: "Русский",
-      path: "/language",
+      subtitle: currentLanguage?.nativeName || "Русский",
+      onClick: openLanguageModal,
       iconBg: "var(--mantine-color-violet-1)",
       iconColor: "var(--mantine-color-violet-6)",
     },
@@ -77,6 +96,11 @@ export function MobileProfilePage() {
 
   const handleLogout = () => {
     console.log("Logout clicked");
+  };
+
+  const handleLanguageSelect = (code: string) => {
+    setSelectedLanguage(code);
+    closeLanguageModal();
   };
 
   const handleEditProfile = () => {
@@ -154,6 +178,37 @@ export function MobileProfilePage() {
         {/* App Version */}
         <Text className={classes.version}>Версия 1.0.0</Text>
       </Container>
+
+      {/* Language Modal */}
+      <Modal
+        opened={languageModalOpened}
+        onClose={closeLanguageModal}
+        title="Выберите язык"
+        centered
+        radius="lg"
+        size="sm"
+        classNames={{
+          header: classes.modalHeader,
+          title: classes.modalTitle,
+          body: classes.modalBody,
+        }}
+      >
+        <Box className={classes.languageList}>
+          {languages.map((language) => (
+            <Flex
+              key={language.code}
+              className={classes.languageItem}
+              data-selected={selectedLanguage === language.code || undefined}
+              onClick={() => handleLanguageSelect(language.code)}
+            >
+              <Text className={classes.languageName}>{language.nativeName}</Text>
+              {selectedLanguage === language.code && (
+                <IconCheck size={20} className={classes.checkIcon} />
+              )}
+            </Flex>
+          ))}
+        </Box>
+      </Modal>
 
       <BottomNavbar />
     </Flex>

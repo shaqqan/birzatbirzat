@@ -1,5 +1,6 @@
 import { Button, Drawer, Radio, Stack } from "@mantine/core";
 import { IconPlus } from "@tabler/icons-react";
+import { useNavigate } from "react-router-dom";
 import classes from "./Header.module.css";
 
 interface Address {
@@ -24,6 +25,17 @@ export function AddressDrawer({
   onSelectAddress,
   onAddAddress,
 }: AddressDrawerProps) {
+  const navigate = useNavigate();
+
+  const handleAddAddress = () => {
+    onClose();
+    if (onAddAddress) {
+      onAddAddress();
+    } else {
+      navigate("/addresses/add");
+    }
+  };
+
   return (
     <Drawer
       opened={opened}
@@ -61,7 +73,7 @@ export function AddressDrawer({
         radius="xl"
         leftSection={<IconPlus size={20} />}
         className={classes.addAddressButton}
-        onClick={onAddAddress}
+        onClick={handleAddAddress}
       >
         Добавить новый адрес
       </Button>
