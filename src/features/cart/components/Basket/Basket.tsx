@@ -7,58 +7,26 @@ import {
   Box,
   Divider,
   Flex,
+  Loader,
+  Center,
+  Button,
 } from "@mantine/core";
 import {
   IconMinus,
   IconPlus,
   IconInfoCircle,
   IconTruck,
+  IconTrash,
 } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
+import { useCart, useUpdateCartItem, useRemoveFromCart } from "@/features/cart";
+import { useAuth } from "@/app/providers";
 import classes from "./Basket.module.css";
 
-interface BasketItem {
-  id: string;
-  name: string;
-  image: string;
-  price: number;
-  oldPrice?: number | null;
-  quantity: number;
-  unit: string;
-}
-
-const basketItems: BasketItem[] = [
-  {
-    id: "1",
-    name: "Молоко 3,2% «Домик в деревне» 930 мл",
-    image:
-      "https://yastatic.net/avatars/get-grocery-goods/2750890/f387e932-ff15-4fb6-9897-6c77e1a48271/600x600?webp=true",
-    price: 89000,
-    oldPrice: 99000,
-    quantity: 1,
-    unit: "500 мл",
-  },
-  {
-    id: "2",
-    name: "Вишня в шоколаде «Лавка 100» замороженная 150 г",
-    image:
-      "https://yastatic.net/avatars/get-grocery-goods/6247604/83670066-12d2-4f57-8849-3ee108dafef8/464x464-webp",
-    price: 200,
-    oldPrice: 250,
-    quantity: 1,
-    unit: "930 мл",
-  },
-  {
-    id: "4",
-    name: "Product 3",
-    image:
-      "https://yastatic.net/avatars/get-grocery-goods/2750890/f387e932-ff15-4fb6-9897-6c77e1a48271/600x600?webp=true",
-    price: 100,
-    oldPrice: null,
-    quantity: 1,
-    unit: "500 мл",
-  },
-];
+// Helper to get text (prefer Russian, fallback to first available)
+const getText = (text: Record<string, string>): string => {
+  return text.ru || text.uz || Object.values(text)[0] || "";
+};
 
 function formatPrice(price: number): string {
   return price.toLocaleString("uz-UZ");
@@ -66,24 +34,92 @@ function formatPrice(price: number): string {
 
 export function Basket() {
   const navigate = useNavigate();
-  const totalPrice = basketItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
-  const totalOldPrice = basketItems.reduce(
-    (sum, item) => sum + (item.oldPrice || item.price) * item.quantity,
-    0
-  );
-  const hasSavings = totalOldPrice > totalPrice;
-  const itemCount = basketItems.reduce((sum, item) => sum + item.quantity, 0);
+  const { isAuthenticated, openLogin } = useAuth();
+  const { data: cart, isLoading } = useCart();
+  const updateCartItem = useUpdateCartItem();
+  const removeFromCart = useRemoveFromCart();
 
-  if (basketItems.length === 0) {
+  const handleQuantityChange = (productId: number, newQuantity: number) => {
+    if (newQuantity <= 0) {
+      removeFromCart.mutate(productId);
+    } else {
+      updateCartItem.mutate({ productId, quantity: newQuantity });
+    }
+  };
+
+  const handleRemoveItem = (productId: number) => {
+    removeFromCart.mutate(productId);
+  };
+
+  const isUpdating = updateCartItem.isPending || removeFromCart.isPending;
+
+  // Not authenticated - show empty state with login prompt
+  if (!isAuthenticated) {
     return (
       <div className={classes.basket}>
+        <div className={classes.header}>
+          <Group justify="space-between" align="center" mb={16}>
+            <Flex>
+              <Text className={classes.deliveryTime}>Корзина</Text>
+            </Flex>
+          </Group>
+        </div>
         <div className={classes.emptyState}>
           <Text className={classes.emptyTitle}>Корзина пуста</Text>
           <Text className={classes.emptyDescription}>
-            Доставка бесплатно, а это всегда приятно
+            Войдите, чтобы увидеть товары в корзине
+          </Text>
+          <Button
+            variant="light"
+            size="sm"
+            mt="md"
+            onClick={openLogin}
+          >
+            Войти
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className={classes.basket}>
+        <div className={classes.header}>
+          <Group justify="space-between" align="center" mb={16}>
+            <Flex>
+              <Text className={classes.deliveryTime}>Корзина</Text>
+            </Flex>
+          </Group>
+        </div>
+        <Center py="xl">
+          <Loader size="md" />
+        </Center>
+      </div>
+    );
+  }
+
+  const items = cart?.items || [];
+  const itemCount = cart?.itemsCount || 0;
+  const deliveryFee = cart?.deliveryFee || 0;
+  const total = cart?.total || 0;
+
+  // Empty cart
+  if (items.length === 0) {
+    return (
+      <div className={classes.basket}>
+        <div className={classes.header}>
+          <Group justify="space-between" align="center" mb={16}>
+            <Flex>
+              <Text className={classes.deliveryTime}>Корзина</Text>
+            </Flex>
+          </Group>
+        </div>
+        <div className={classes.emptyState}>
+          <Text className={classes.emptyTitle}>Корзина пуста</Text>
+          <Text className={classes.emptyDescription}>
+            Добавьте товары, чтобы оформить заказ
           </Text>
         </div>
       </div>
@@ -110,64 +146,89 @@ export function Basket() {
       </div>
 
       <Stack gap={0} className={classes.items}>
-        {basketItems.map((item, index) => (
-          <Box key={item.id}>
-            <div className={classes.itemRow}>
-              <div className={classes.imageWrapper}>
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  w={56}
-                  h={56}
-                  fit="contain"
-                  className={classes.productImage}
-                />
-              </div>
+        {items.map((item, index) => {
+          const hasDiscount = !!item.product.displayDiscountPrice;
+          const displayPrice = item.product.displayDiscountPrice || item.product.displayPrice;
+          const originalPrice = hasDiscount ? item.product.displayPrice : null;
 
-              <Box className={classes.productInfo}>
-                <Text className={classes.productName}>{item.name}</Text>
-                <div className={classes.priceRow}>
-                  <Text
-                    className={
-                      item.oldPrice ? classes.priceDiscount : classes.price
-                    }
-                  >
-                    {formatPrice(item.price)} сум
-                  </Text>
-                  {item.oldPrice && (
-                    <Text className={classes.oldPrice}>
-                      {formatPrice(item.oldPrice)} сум
-                    </Text>
-                  )}
-                  <Text className={classes.unit}>{item.unit}</Text>
+          return (
+            <Box key={item.id}>
+              <div className={classes.itemRow}>
+                <div className={classes.imageWrapper}>
+                  <Image
+                    src={item.product.image || ""}
+                    alt={getText(item.product.name)}
+                    w={56}
+                    h={56}
+                    fit="contain"
+                    className={classes.productImage}
+                  />
                 </div>
-              </Box>
 
-              <div className={classes.quantityControl}>
-                <ActionIcon
-                  variant="transparent"
-                  color="dark"
-                  size={28}
-                  className={classes.quantityButton}
-                >
-                  <IconMinus size={24} stroke={2} />
-                </ActionIcon>
-                <Text className={classes.quantity}>{item.quantity}</Text>
-                <ActionIcon
-                  variant="transparent"
-                  color="dark"
-                  size={28}
-                  className={classes.quantityButton}
-                >
-                  <IconPlus size={24} stroke={2} />
-                </ActionIcon>
+                <Box className={classes.productInfo}>
+                  <Text className={classes.productName}>
+                    {getText(item.product.name)}
+                  </Text>
+                  <div className={classes.priceRow}>
+                    <Text
+                      className={
+                        hasDiscount ? classes.priceDiscount : classes.price
+                      }
+                    >
+                      {formatPrice(displayPrice)} сум
+                    </Text>
+                    {originalPrice && (
+                      <Text className={classes.oldPrice}>
+                        {formatPrice(originalPrice)} сум
+                      </Text>
+                    )}
+                    <Text className={classes.unit}>{item.product.unit}</Text>
+                  </div>
+                </Box>
+
+                <div className={classes.quantityControl}>
+                  {item.quantity === 1 ? (
+                    <ActionIcon
+                      variant="transparent"
+                      color="red"
+                      size={28}
+                      className={classes.quantityButton}
+                      onClick={() => handleRemoveItem(item.productId)}
+                      disabled={isUpdating}
+                    >
+                      <IconTrash size={20} stroke={1.5} />
+                    </ActionIcon>
+                  ) : (
+                    <ActionIcon
+                      variant="transparent"
+                      color="dark"
+                      size={28}
+                      className={classes.quantityButton}
+                      onClick={() => handleQuantityChange(item.productId, item.quantity - 1)}
+                      disabled={isUpdating}
+                    >
+                      <IconMinus size={24} stroke={2} />
+                    </ActionIcon>
+                  )}
+                  <Text className={classes.quantity}>{item.quantity}</Text>
+                  <ActionIcon
+                    variant="transparent"
+                    color="dark"
+                    size={28}
+                    className={classes.quantityButton}
+                    onClick={() => handleQuantityChange(item.productId, item.quantity + 1)}
+                    disabled={isUpdating || item.quantity >= item.product.stock}
+                  >
+                    <IconPlus size={24} stroke={2} />
+                  </ActionIcon>
+                </div>
               </div>
-            </div>
-            {index < basketItems.length - 1 && (
-              <Divider className={classes.divider} />
-            )}
-          </Box>
-        ))}
+              {index < items.length - 1 && (
+                <Divider className={classes.divider} />
+              )}
+            </Box>
+          );
+        })}
       </Stack>
 
       <div className={classes.footer}>
@@ -177,9 +238,9 @@ export function Basket() {
               <IconTruck size={20} stroke={1.5} />
             </div>
             <div className={classes.footerTextGroup}>
-              <span className={classes.footerDeliveryTime}>5-15 мин</span>
+              <span className={classes.footerDeliveryTime}>15-30 мин</span>
               <span className={classes.footerDeliveryNote}>
-                Бесплатная доставка
+                {deliveryFee === 0 ? "Бесплатная доставка" : `Доставка: ${formatPrice(deliveryFee)} сум`}
               </span>
             </div>
           </div>
@@ -194,13 +255,8 @@ export function Basket() {
             </span>
             <span className={classes.priceGroup}>
               <span className={classes.totalPrice}>
-                {formatPrice(totalPrice)} сум
+                {formatPrice(total)} сум
               </span>
-              {hasSavings && (
-                <span className={classes.totalOldPrice}>
-                  {formatPrice(totalOldPrice)} сум
-                </span>
-              )}
             </span>
           </span>
         </button>

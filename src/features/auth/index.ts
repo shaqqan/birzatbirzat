@@ -1,5 +1,8 @@
-// Components
-export * from "./components";
+// API
+export { authApi } from "./api/auth.api";
 
-// Hooks
-export { useAuth } from "./hooks/useAuth";
+// Components
+export { LoginModal } from "./components/LoginModal";
+
+// Types
+export type { User, AuthResponse } from "./types";

@@ -1,0 +1,75 @@
+.root {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.slide {
+  cursor: pointer;
+}
+
+.bannerImage {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1520 / 480;
+  border-radius: 16px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Navigation Buttons */
+.control {
+  opacity: 0;
+  transition: opacity 200ms ease, transform 200ms ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background-color: white;
+  border: none;
+}
+
+.root:hover .control {
+  opacity: 1;
+}
+
+.control:hover {
+  transform: scale(1.05);
+}
+
+.control:active {
+  transform: scale(0.95);
+}
+
+/* Dots Indicator */
+.indicators {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 8px;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: all 200ms ease;
+}
+
+.indicator:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+}
+
+.indicator[data-active] {
+  background-color: #fff;
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* Loading Skeleton */
+.skeletonContainer {
+  width: 100%;
+  aspect-ratio: 1520 / 480;
+  border-radius: 16px;
+  overflow: hidden;
+}

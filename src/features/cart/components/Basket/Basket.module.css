@@ -35,6 +35,7 @@
 
 /* Items List */
 .items {
+  flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: none;
@@ -187,6 +188,7 @@
 
 /* Footer */
 .footer {
+  margin-top: auto;
   padding: var(--space-md) 0 0;
   display: flex;
   flex-direction: column;

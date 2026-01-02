@@ -1,4 +1,4 @@
-import type { ProductCardItem } from "@/types";
+import type { ProductCardItem } from "@/features/products";
 
 // Base product type for mock data
 export interface MockProduct {

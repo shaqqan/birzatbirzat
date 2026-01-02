@@ -1,124 +1,100 @@
 import { createBrowserRouter } from "react-router-dom";
-import { MainLayout } from "@/components/layout";
-import { HomePage } from "@/pages/Desktop/Home";
-import { ProductDetailPage } from "@/pages/Desktop/ProductDetail";
-import { ProfilePage } from "@/pages/Desktop/Profile";
-import { OrdersPage } from "@/pages/Desktop/Orders";
-import { FavoritesPage } from "@/pages/Desktop/Favorites";
-import { CatalogPage } from "@/pages/Desktop/Catalog";
-import { CheckoutPage } from "@/pages/Desktop/Checkout";
-import { useDevice } from "@/hooks/useDevice";
-import { MobileHomePage } from "@/pages/Mobile/Home/MobileHomePage";
-import { MobileProductDetailPage } from "@/pages/Mobile/ProductDetail";
-import { MobileCatalogPage } from "@/pages/Mobile/Catalog";
-import { MobileBasketPage } from "@/pages/Mobile/Basket";
-import { MobileFavoritesPage } from "@/pages/Mobile/Favorites";
-import { MobileProfilePage } from "@/pages/Mobile/Profile";
-import { MobileOrdersPage } from "@/pages/Mobile/Orders";
-import { MobileAddressesPage, MobileAddAddressPage } from "@/pages/Mobile/Addresses";
-import { MobileCheckoutPage } from "@/pages/Mobile/Checkout";
-import { MobilePaymentResultPage } from "@/pages/Mobile/PaymentResult";
-import { MobileNotFoundPage } from "@/pages/Mobile/NotFound/MobileNotFoundPage";
+import { MainLayout } from "@/layouts";
+import { AuthGuard } from "@/app/guards";
 
-// Placeholder component for now
-const PlaceholderPage = () => null;
-
-const { isMobile } = useDevice();
-
-const desktopRoutes = [
-  {
-    path: "/",
-    element: <HomePage />,
-  },
-  {
-    path: "product/:id",
-    element: <ProductDetailPage />,
-  },
-  {
-    path: "catalog",
-    element: <CatalogPage />,
-  },
-  {
-    path: "catalog/:categoryId",
-    element: <CatalogPage />,
-  },
-  {
-    path: "promo",
-    element: <PlaceholderPage />,
-  },
-  {
-    path: "checkout",
-    element: <CheckoutPage />,
-  },
-  {
-    path: "favorites",
-    element: <FavoritesPage />,
-  },
-  {
-    path: "profile",
-    element: <ProfilePage />,
-  },
-  {
-    path: "orders",
-    element: <OrdersPage />,
-  },
-];
-
-const mobileRoutes = [
-  {
-    path: "/",
-    element: <MobileHomePage />,
-  },
-  {
-    path: "product/:id",
-    element: <MobileProductDetailPage />,
-  },
-  {
-    path: "catalog",
-    element: <MobileCatalogPage />,
-  },
-  {
-    path: "basket",
-    element: <MobileBasketPage />,
-  },
-  {
-    path: "favorites",
-    element: <MobileFavoritesPage />,
-  },
-  {
-    path: "profile",
-    element: <MobileProfilePage />,
-  },
-  {
-    path: "orders",
-    element: <MobileOrdersPage />,
-  },
-  {
-    path: "addresses",
-    element: <MobileAddressesPage />,
-  },
-  {
-    path: "addresses/add",
-    element: <MobileAddAddressPage />,
-  },
-  {
-    path: "checkout",
-    element: <MobileCheckoutPage />,
-  },
-  {
-    path: "payment-result",
-    element: <MobilePaymentResultPage />,
-  },
-  {
-    path: "*",
-    element: <MobileNotFoundPage />,
-  },
-];
+// Pages
+import { HomePage } from "@/pages/home";
+import { CatalogPage } from "@/pages/catalog";
+import { ProductPage } from "@/pages/product";
+import { CartPage } from "@/pages/cart";
+import { CheckoutPage, PaymentResultPage } from "@/pages/checkout";
+import { FavoritesPage } from "@/pages/favorites";
+import { ProfilePage } from "@/pages/profile";
+import { OrdersPage } from "@/pages/orders";
+import { AddressesPage, AddAddressPage } from "@/pages/addresses";
+import { NotFoundPage } from "@/pages/NotFoundPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    children: isMobile ? mobileRoutes : desktopRoutes,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "product/:id",
+        element: <ProductPage />,
+      },
+      {
+        path: "catalog",
+        element: <CatalogPage />,
+      },
+      {
+        path: "basket",
+        element: (
+          <AuthGuard>
+            <CartPage />
+          </AuthGuard>
+        ),
+      },
+      {
+        path: "favorites",
+        element: (
+          <AuthGuard>
+            <FavoritesPage />
+          </AuthGuard>
+        ),
+      },
+      {
+        path: "profile",
+        element: (
+          <AuthGuard>
+            <ProfilePage />
+          </AuthGuard>
+        ),
+      },
+      {
+        path: "orders",
+        element: (
+          <AuthGuard>
+            <OrdersPage />
+          </AuthGuard>
+        ),
+      },
+      {
+        path: "addresses",
+        element: (
+          <AuthGuard>
+            <AddressesPage />
+          </AuthGuard>
+        ),
+      },
+      {
+        path: "addresses/add",
+        element: (
+          <AuthGuard>
+            <AddAddressPage />
+          </AuthGuard>
+        ),
+      },
+      {
+        path: "checkout",
+        element: (
+          <AuthGuard>
+            <CheckoutPage />
+          </AuthGuard>
+        ),
+      },
+      {
+        path: "payment-result",
+        element: <PaymentResultPage />,
+      },
+      {
+        path: "*",
+        element: <NotFoundPage />,
+      },
+    ],
   },
 ]);

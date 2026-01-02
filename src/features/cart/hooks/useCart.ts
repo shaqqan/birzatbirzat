@@ -1,77 +1,48 @@
-import { useState, useCallback } from "react";
-import type { CartItem } from "@/types/cart";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { tokenManager } from "@/shared/api";
+import { cartApi } from "../api/cart.api";
+import type { Cart } from "../types";
+import { QUERY_KEYS } from "@/shared/constants";
 
-interface UseCartReturn {
-  items: CartItem[];
-  addItem: (item: Omit<CartItem, "quantity"> & { quantity?: number }) => void;
-  removeItem: (id: string | number) => void;
-  updateQuantity: (id: string | number, quantity: number) => void;
-  clearCart: () => void;
-  getItemQuantity: (id: string | number) => number;
-  totalItems: number;
-  totalPrice: number;
+export function useCart() {
+  return useQuery<Cart>({
+    queryKey: QUERY_KEYS.CART,
+    queryFn: cartApi.getCart,
+    enabled: tokenManager.isAuthenticated(),
+  });
 }
 
-export const useCart = (initialItems: CartItem[] = []): UseCartReturn => {
-  const [items, setItems] = useState<CartItem[]>(initialItems);
+export function useAddToCart() {
+  const queryClient = useQueryClient();
 
-  const addItem = useCallback(
-    (item: Omit<CartItem, "quantity"> & { quantity?: number }) => {
-      setItems((prev) => {
-        const existingIndex = prev.findIndex((i) => i.id === item.id);
-        if (existingIndex >= 0) {
-          const updated = [...prev];
-          updated[existingIndex] = {
-            ...updated[existingIndex],
-            quantity: updated[existingIndex].quantity + (item.quantity || 1),
-          };
-          return updated;
-        }
-        return [...prev, { ...item, quantity: item.quantity || 1 }];
-      });
+  return useMutation({
+    mutationFn: ({ productId, quantity }: { productId: number; quantity: number }) =>
+      cartApi.addItem(productId, quantity),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: QUERY_KEYS.CART });
     },
-    []
-  );
+  });
+}
 
-  const removeItem = useCallback((id: string | number) => {
-    setItems((prev) => prev.filter((item) => item.id !== id));
-  }, []);
+export function useUpdateCartItem() {
+  const queryClient = useQueryClient();
 
-  const updateQuantity = useCallback((id: string | number, quantity: number) => {
-    if (quantity <= 0) {
-      setItems((prev) => prev.filter((item) => item.id !== id));
-      return;
-    }
-    setItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, quantity } : item))
-    );
-  }, []);
-
-  const clearCart = useCallback(() => {
-    setItems([]);
-  }, []);
-
-  const getItemQuantity = useCallback(
-    (id: string | number) => {
-      return items.find((item) => item.id === id)?.quantity || 0;
+  return useMutation({
+    mutationFn: ({ productId, quantity }: { productId: number; quantity: number }) =>
+      cartApi.updateItem(productId, quantity),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: QUERY_KEYS.CART });
     },
-    [items]
-  );
+  });
+}
 
-  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+export function useRemoveFromCart() {
+  const queryClient = useQueryClient();
 
-  return {
-    items,
-    addItem,
-    removeItem,
-    updateQuantity,
-    clearCart,
-    getItemQuantity,
-    totalItems,
-    totalPrice,
-  };
-};
+  return useMutation({
+    mutationFn: (productId: number) => cartApi.removeItem(productId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: QUERY_KEYS.CART });
+    },
+  });
+}

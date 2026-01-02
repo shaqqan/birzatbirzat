@@ -1,95 +1,251 @@
-.modalContent {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 8px 0 16px;
+/* Drawer styles */
+.drawerContent {
+  border-radius: 24px 24px 0 0;
+  max-height: 90vh;
 }
 
-.inputWrapper {
+.drawerBody {
+  padding: 0;
+}
+
+.drawerOverlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Error toast */
+.errorToast {
   display: flex;
   align-items: center;
-  border: 2px solid var(--mantine-color-gray-3);
+  gap: 12px;
+  padding: 12px 16px;
+  margin: 16px 16px 0;
+  background-color: #fef2f2;
   border-radius: 12px;
-  overflow: hidden;
-  transition: all 0.2s ease;
-  background-color: var(--mantine-color-gray-0);
+  border: 1px solid #fecaca;
 }
 
-.inputWrapper:focus-within {
-  border-color: var(--mantine-color-red-5);
-  background-color: white;
-  box-shadow: 0 0 0 4px rgba(229, 57, 53, 0.1);
+.errorIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--mantine-color-primary-6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.prefix {
-  padding: 16px 14px 16px 18px;
+.errorText {
+  flex: 1;
+  color: var(--mantine-color-dark-7);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 16px 8px;
+  position: relative;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--mantine-color-dark-7);
+}
+
+.backButton {
+  position: absolute;
+  left: 16px;
+}
+
+.closeButton {
+  position: absolute;
+  right: 16px;
+  border-radius: 50%;
   background-color: var(--mantine-color-gray-1);
-  color: var(--mantine-color-dark-6);
-  font-weight: 600;
-  font-size: 17px;
-  border-right: 2px solid var(--mantine-color-gray-3);
-  user-select: none;
+  border: none;
+  color: var(--mantine-color-gray-9);
+}
+
+/* Content */
+.content {
+  padding: 8px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+}
+
+.headingSection {
+  margin-bottom: 24px;
+}
+
+.heading {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--mantine-color-dark-9);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--mantine-color-gray-9);
+}
+
+/* Phone input */
+.phoneInputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: auto;
+}
+
+.countrySelect {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 12px;
+  border-radius: 12px;
+  background-color: var(--mantine-color-gray-1);
+  color: var(--mantine-color-gray-9);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.flag {
+  font-size: 18px;
+}
+
+.countryCode {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--mantine-color-dark-7);
+}
+
+.chevron {
+  font-size: 14px;
+  color: var(--mantine-color-gray-5);
+  margin-left: 2px;
 }
 
 .phoneInput {
   flex: 1;
-  border: none;
-  outline: none;
-  padding: 16px 18px;
-  font-size: 17px;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 16px;
   font-family: inherit;
-  background: transparent;
-  letter-spacing: 0.5px;
-  color: var(--mantine-color-dark-7);
+  outline: none;
+  background-color: var(--mantine-color-gray-1);
+  border: none;
+  color: var(--mantine-color-gray-9);
+  transition: border-color 0.2s;
+}
+
+.phoneInput:focus {
+  border-color: var(--mantine-color-gray-5);
 }
 
 .phoneInput::placeholder {
   color: var(--mantine-color-gray-4);
-  letter-spacing: 0.5px;
 }
 
-.sendButton {
-  margin-top: 12px;
-  height: 48px;
+/* Footer with terms and button */
+.footer {
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.termsText {
+  font-size: 13px;
+  color: var(--mantine-color-gray-6);
+  text-align: center;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.link {
+  color: var(--mantine-color-primary-6);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.submitButton {
+  height: 52px;
   font-size: 16px;
   font-weight: 600;
+  background-color: var(--mantine-color-primary-5);
 }
 
-/* OTP Step Styles */
-.otpHeader {
-  display: flex;
-  align-items: center;
-  width: 100%;
+.submitButton:disabled {
+  background-color: var(--mantine-color-gray-2);
+  color: var(--mantine-color-gray-5);
 }
 
-.otpTitle {
-  flex: 1;
-  text-align: center;
+.submitButton:not(:disabled):hover {
+  background-color: var(--mantine-color-primary-6);
 }
 
-.otpHeaderSpacer {
-  width: 42px;
-}
-
-.otpInfo {
-  text-align: center;
-}
-
-.otpContainer {
+/* OTP section */
+.otpSection {
   display: flex;
   justify-content: center;
-  margin: 8px 0;
+  margin-bottom: 16px;
 }
 
-.timerSection {
-  text-align: center;
-  margin-top: 4px;
+.pinInputRoot {
+  gap: 8px;
 }
 
+.pinInput {
+  width: 68px;
+  height: 56px;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  border: none;
+  border-radius: 12px !important;
+  background-color: var(--mantine-color-gray-1) !important;
+}
+
+.pinInput:focus {
+  border-color: var(--mantine-color-dark-4) !important;
+}
+
+.pinInputError {
+  width: 56px !important;
+  height: 56px !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  border: 2px solid var(--mantine-color-primary-6) !important;
+  border-radius: 12px !important;
+  background-color: #fef2f2 !important;
+  color: var(--mantine-color-primary-6) !important;
+}
+
+/* Timer section */
 .timerText {
-  display: inline-block;
+  font-size: 14px;
+  color: var(--mantine-color-gray-6);
+  text-align: left;
+  padding: 0;
+  margin: o;
 }
 
-.resendButton {
-  margin: 0 auto;
+.timerValue {
+  color: var(--mantine-color-primary-5);
+  font-weight: 500;
+}
+
+.resendLabel {
+  font-size: 14px;
+  color: var(--mantine-color-gray-6);
+  margin-bottom: 16px;
 }

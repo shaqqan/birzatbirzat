@@ -1,1 +1,0 @@
-export { MobileOrdersPage } from "./MobileOrdersPage";

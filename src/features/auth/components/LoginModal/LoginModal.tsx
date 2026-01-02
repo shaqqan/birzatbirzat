@@ -1,41 +1,64 @@
 import { useState, useEffect } from "react";
-import { Modal, Button, Text, ActionIcon, PinInput } from "@mantine/core";
-import { IconArrowLeft } from "@tabler/icons-react";
+import { Drawer, Button, Text, ActionIcon, PinInput } from "@mantine/core";
+import { IconArrowLeft, IconX } from "@tabler/icons-react";
 import { IMaskInput } from "react-imask";
 import classes from "./LoginModal.module.css";
+
+// Hook to detect keyboard height
+function useKeyboardHeight() {
+  const [keyboardHeight, setKeyboardHeight] = useState(0);
+
+  useEffect(() => {
+    const viewport = window.visualViewport;
+    if (!viewport) return;
+
+    const handleResize = () => {
+      const height = window.innerHeight - viewport.height;
+      setKeyboardHeight(height > 0 ? height : 0);
+    };
+
+    viewport.addEventListener("resize", handleResize);
+    viewport.addEventListener("scroll", handleResize);
+
+    return () => {
+      viewport.removeEventListener("resize", handleResize);
+      viewport.removeEventListener("scroll", handleResize);
+    };
+  }, []);
+
+  return keyboardHeight;
+}
 
 interface LoginModalProps {
   opened: boolean;
   onClose: () => void;
   onSendOtp?: (phone: string) => void;
   onVerifyOtp?: (phone: string, otp: string) => void;
+  otpError?: boolean;
+  onOtpErrorClear?: () => void;
 }
 
 type Step = "phone" | "otp";
 
-const TIMER_SECONDS = 180; // 3 minutes
+const TIMER_SECONDS = 60;
 
 export const LoginModal = ({
   opened,
   onClose,
   onSendOtp,
   onVerifyOtp,
+  otpError,
+  onOtpErrorClear,
 }: LoginModalProps) => {
   const [phone, setPhone] = useState("");
   const [step, setStep] = useState<Step>("phone");
   const [otp, setOtp] = useState("");
   const [timer, setTimer] = useState(TIMER_SECONDS);
+  const keyboardHeight = useKeyboardHeight();
 
   const isPhoneComplete = phone.replace(/\D/g, "").length === 9;
-  const isOtpComplete = otp.length === 4;
-  const cleanPhone = "+998" + phone.replace(/\D/g, "");
   const canResend = timer === 0;
-
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, "0")}`;
-  };
+  const cleanPhone = "+998" + phone.replace(/\D/g, "");
 
   useEffect(() => {
     if (!opened) {
@@ -65,152 +88,197 @@ export const LoginModal = ({
       onSendOtp?.(cleanPhone);
       setTimer(TIMER_SECONDS);
       setOtp("");
+      onOtpErrorClear?.();
     }
   };
 
-  const handleVerify = () => {
-    onVerifyOtp?.(cleanPhone, otp);
+  const handleOtpChange = (value: string) => {
+    setOtp(value);
+    onOtpErrorClear?.();
+    if (value.length === 5) {
+      onVerifyOtp?.(cleanPhone, value);
+    }
   };
 
   const handleBack = () => {
     setStep("phone");
     setOtp("");
+    onOtpErrorClear?.();
   };
 
   return (
-    <Modal
+    <Drawer
       opened={opened}
       onClose={onClose}
-      title={
-        step === "otp" ? (
-          <div className={classes.otpHeader}>
-            <ActionIcon
-              variant="subtle"
-              color="gray"
-              size="lg"
-              onClick={handleBack}
-            >
-              <IconArrowLeft size={20} />
-            </ActionIcon>
-            <span className={classes.otpTitle}>Подтверждение</span>
-            <div className={classes.otpHeaderSpacer} />
-          </div>
-        ) : (
-          "Вход"
-        )
-      }
-      size={420}
-      radius="lg"
-      centered
+      position="bottom"
+      size="auto"
+      withCloseButton={false}
+      classNames={{
+        content: classes.drawerContent,
+        body: classes.drawerBody,
+        overlay: classes.drawerOverlay,
+      }}
       styles={{
-        title: { fontWeight: 700, fontSize: 26, width: "100%" },
-        header: { paddingBottom: 8 },
         content: {
-          borderRadius: 24,
-          boxShadow: "0 12px 40px rgba(0, 0, 0, 0.15)",
-        },
-        body: {
-          padding: "0 24px 24px",
+          transform: keyboardHeight > 0 ? `translateY(-${keyboardHeight}px)` : undefined,
+          transition: "transform 0.1s ease-out",
         },
       }}
     >
-      {step === "phone" ? (
-        <div className={classes.modalContent}>
-          <Text size="sm" c="dimmed">
-            Введите номер телефона для входа
+      {/* Error toast */}
+      {otpError && (
+        <div className={classes.errorToast}>
+          <div className={classes.errorIcon}>
+            <IconX size={20} stroke={2.5} />
+          </div>
+          <Text size="sm" className={classes.errorText}>
+            Неправильный код. Пожалуйста, попробуйте еще раз
           </Text>
+          <ActionIcon
+            variant="subtle"
+            color="dark"
+            size="sm"
+            onClick={onOtpErrorClear}
+          >
+            <IconX size={16} />
+          </ActionIcon>
+        </div>
+      )}
 
-          <div className={classes.inputWrapper}>
-            <div className={classes.prefix}>+998</div>
+      {/* Header */}
+      <div className={classes.header}>
+        {step === "otp" && (
+          <ActionIcon
+            variant="subtle"
+            color="dark"
+            size="lg"
+            onClick={handleBack}
+            className={classes.backButton}
+          >
+            <IconArrowLeft size={20} />
+          </ActionIcon>
+        )}
+        <Text className={classes.title}>Войти</Text>
+        <ActionIcon
+          variant="subtle"
+          color="dark"
+          size="lg"
+          onClick={onClose}
+          className={classes.closeButton}
+        >
+          <IconX size={20} />
+        </ActionIcon>
+      </div>
+
+      {step === "phone" ? (
+        <div className={classes.content}>
+          <div className={classes.headingSection}>
+            <Text className={classes.heading}>
+              Введите ваш номер
+              <br />
+              телефона
+            </Text>
+            <Text className={classes.subtitle}>
+              Мы отправим вам код подтверждения
+            </Text>
+          </div>
+
+          <div className={classes.phoneInputWrapper}>
+            <div className={classes.countrySelect}>
+              <span className={classes.countryCode}>+998</span>
+            </div>
             <IMaskInput
               mask="(00) 000-00-00"
               value={phone}
-              onAccept={(value) => setPhone(value)}
+              onAccept={(value: string) => setPhone(value)}
               placeholder="(00) 000-00-00"
               className={classes.phoneInput}
             />
           </div>
 
-          <Button
-            size="lg"
-            radius="md"
-            fullWidth
-            onClick={handleSendOtp}
-            disabled={!isPhoneComplete}
-            className={classes.sendButton}
-          >
-            Отправить код
-          </Button>
+          <div className={classes.footer}>
+            <Text className={classes.termsText}>
+              Продолжая, вы соглашаетесь с нашими{" "}
+              <Text component="span" className={classes.link}>
+                условиями использования
+              </Text>{" "}
+              и{" "}
+              <Text component="span" className={classes.link}>
+                Политикой конфиденциальности
+              </Text>
+              .
+            </Text>
+
+            <Button
+              size="lg"
+              radius="12px"
+              fullWidth
+              onClick={handleSendOtp}
+              disabled={!isPhoneComplete}
+              className={classes.submitButton}
+            >
+              Продолжить
+            </Button>
+          </div>
         </div>
       ) : (
-        <div className={classes.modalContent}>
-          <div className={classes.otpInfo}>
-            <Text size="sm" c="dimmed">
-              Введите код, отправленный на номер
+        <div className={classes.content}>
+          <div className={classes.headingSection}>
+            <Text className={classes.heading}>
+              Введите код
+              <br />
+              подтверждения
             </Text>
-            <Text size="sm" fw={600}>
-              {cleanPhone.replace(
-                /(\+998)(\d{2})(\d{3})(\d{2})(\d{2})/,
-                "$1 ($2) $3-$4-$5"
-              )}
+            <Text className={classes.subtitle}>
+              Код был отправлен на номер {cleanPhone}
             </Text>
           </div>
 
-          <div className={classes.otpContainer}>
+          <div className={classes.otpSection}>
             <PinInput
-              length={4}
-              size="xl"
+              length={5}
+              // @ts-ignore
+              size=""
               value={otp}
-              onChange={setOtp}
+              onChange={handleOtpChange}
               type="number"
               autoFocus
-              styles={{
-                input: {
-                  width: 64,
-                  height: 72,
-                  fontSize: 28,
-                  fontWeight: 600,
-                  borderRadius: 16,
-                  border: "2px solid var(--mantine-color-gray-3)",
-                  backgroundColor: "var(--mantine-color-gray-0)",
-                },
+              error={otpError}
+              classNames={{
+                root: classes.pinInputRoot,
+                input: otpError ? classes.pinInputError : classes.pinInput,
               }}
             />
           </div>
 
-          <Button
-            size="lg"
-            radius="md"
-            fullWidth
-            onClick={handleVerify}
-            disabled={!isOtpComplete}
-            className={classes.sendButton}
-          >
-            Подтвердить
-          </Button>
-
           <div className={classes.timerSection}>
             {canResend ? (
-              <Button
-                variant="subtle"
-                color="red"
-                size="sm"
-                onClick={handleResendOtp}
-                className={classes.resendButton}
-              >
-                Отправить код повторно
-              </Button>
-            ) : (
-              <Text size="sm" c="dimmed" className={classes.timerText}>
-                Отправить повторно через{" "}
-                <Text span fw={600} c="dark">
-                  {formatTime(timer)}
+              <>
+                <Text className={classes.resendLabel}>
+                  Не получили код? Вы сможете повторно отправить
                 </Text>
+                <Button
+                  size="lg"
+                  radius="xl"
+                  fullWidth
+                  onClick={handleResendOtp}
+                  className={classes.submitButton}
+                >
+                  Отправить код повторно
+                </Button>
+              </>
+            ) : (
+              <Text className={classes.timerText}>
+                Вы сможете отправить повторно через{" "}
+                <Text component="span" className={classes.timerValue}>
+                  {timer} сек
+                </Text>
+                .
               </Text>
             )}
           </div>
         </div>
       )}
-    </Modal>
+    </Drawer>
   );
 };

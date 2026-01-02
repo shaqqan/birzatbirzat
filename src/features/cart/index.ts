@@ -1,8 +1,13 @@
-// Components
-export * from "./components";
+// API
+export { cartApi } from "./api/cart.api";
 
 // Hooks
-export { useCart } from "./hooks/useCart";
+export { useCart, useAddToCart, useUpdateCartItem, useRemoveFromCart } from "./hooks/useCart";
+
+// Components
+export { Basket } from "./components/Basket";
+export { CartButton } from "./components/CartButton";
+export { QuantityCounter } from "./components/QuantityCounter";
 
 // Types
-export type { CartItem, BasketItem, PaymentMethod, DeliveryTime } from "@/types/cart";
+export type { Cart, CartItem, CartProduct, BasketItem, PaymentMethod, DeliveryTime } from "./types";

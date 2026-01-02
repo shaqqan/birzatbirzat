@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ActionIcon, Image } from "@mantine/core";
 import { IconHeart, IconHeartFilled } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
@@ -18,6 +17,7 @@ export interface ProductCardProps {
   onQuantityChange?: (quantity: number) => void;
   isFavorite?: boolean;
   onFavoriteToggle?: () => void;
+  isFavoriteLoading?: boolean;
   fullWidth?: boolean;
   isHit?: boolean;
   showDiscount?: boolean;
@@ -35,12 +35,12 @@ export const ProductCard = ({
   onQuantityChange,
   isFavorite = false,
   onFavoriteToggle,
+  isFavoriteLoading = false,
   fullWidth = false,
   isHit = false,
   showDiscount = true,
 }: ProductCardProps) => {
   const navigate = useNavigate();
-  const [favorite, setFavorite] = useState(isFavorite);
 
   const handleCardClick = () => {
     if (id) {
@@ -62,7 +62,6 @@ export const ProductCard = ({
 
   const handleFavoriteClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setFavorite(!favorite);
     onFavoriteToggle?.();
   };
 
@@ -85,13 +84,14 @@ export const ProductCard = ({
         {showDiscount && <DiscountBadge discount={discountInPercent} />}
         <ActionIcon
           className={classes.favoriteButton}
-          variant={favorite ? "filled" : "white"}
-          color={favorite ? "red" : "gray"}
+          variant={isFavorite ? "filled" : "white"}
+          color={isFavorite ? "red" : "gray"}
           size="md"
           radius="xl"
           onClick={handleFavoriteClick}
+          loading={isFavoriteLoading}
         >
-          {favorite ? <IconHeartFilled size={18} /> : <IconHeart size={18} />}
+          {isFavorite ? <IconHeartFilled size={18} /> : <IconHeart size={18} />}
         </ActionIcon>
       </div>
       <div className={classes.content}>

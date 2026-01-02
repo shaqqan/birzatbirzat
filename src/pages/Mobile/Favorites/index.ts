@@ -1,1 +1,0 @@
-export { MobileFavoritesPage } from "./MobileFavoritesPage";
