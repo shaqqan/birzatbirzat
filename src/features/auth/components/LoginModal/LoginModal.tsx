@@ -193,6 +193,7 @@ export const LoginModal = ({
               onAccept={(value: string) => setPhone(value)}
               placeholder="(00) 000-00-00"
               className={classes.phoneInput}
+              inputMode="numeric"
             />
           </div>
 
